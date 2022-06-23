@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{34B86F40-3718-410D-8FFC-A79A4ABA956B}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{0016667B-5809-4749-B430-5E6B1C56C8CF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,7 +37,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoVSr5uFOjU+fjvlQXR4TQwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABD5/NXK3amAXJ2+DacaOdJAAAAAASAAACgAAAAEAAAAObn8pHjRsBLz4aadcnP+FEYAAAATg50HXqehHsRP/k/Pt/JoiTeP9XN9g/lFAAAAGP9tLTemncpouvjBSxYZGcv2Gxn</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoVSr5uFOjU+fjvlQXR4TQwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACM5NVlBhAOhKBGaWfKJIRVAAAAAASAAACgAAAAEAAAABSmTqs4ywuBT1DSv1D3B8sYAAAA1IKe4UP6YTkkZBA43H8DltYO+BysKt3DFAAAAI76lFbscgLqfh4qfeP5+4577j7a</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -56,12 +56,15 @@
       DTS:CreationName=""
       DTS:DTSID="{139B55F2-3D31-4564-A0FE-A19CE0BE05FB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT acct.create_time, acct.card_no, acct.pin, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin FROM ODS_ZK_acc_transaction acct left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person pp on acct.pin = vv.pin  WHERE acct.create_time &gt; '&quot; + (DT_WSTR,30)@[User::MaxFechaTransf] + &quot;'&quot;"
+      DTS:Expression="&quot;SELECT top 1000 acct.create_time, acct.card_no, acct.pin, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit &#xA;FROM ODS_ZK_acc_transaction acct &#xA;&#x9;left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person ppv on vv.cert_number = ppv.pin&#xA;&#x9;left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt; '&quot; + (DT_WSTR,30)@[User::MaxFechaTransf] + &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="QueryNuevosHechos">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT acct.create_time, acct.card_no, acct.pin, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin FROM ODS_ZK_acc_transaction acct left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person pp on acct.pin = vv.pin  WHERE acct.create_time &gt; '21/06/2022 13:57:22'</DTS:VariableValue>
+        DTS:DataType="8">SELECT top 1000 acct.create_time, acct.card_no, acct.pin, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit 
+FROM ODS_ZK_acc_transaction acct 
+	left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person ppv on vv.cert_number = ppv.pin
+	left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt; '21/06/2022 13:57:22'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -79,6 +82,122 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Agrea columna fuente del evento"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[visitor_pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="visitor_pin"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[person_pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="person_pin"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[person_as_visit]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="person_as_visit"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[fuente_evento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[fuente_evento]"
+                      name="fuente_evento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) ? "V" : ![ISNULL](#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) ? "P" : "O"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(visitor_pin) ? "V" : !ISNULL(person_pin) ? "P" : "O"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[visita_persona]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[visita_persona]"
+                      name="visita_persona"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; ![ISNULL](#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}) ?  TRUE  :  FALSE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(visitor_pin) &amp;&amp; !ISNULL(person_as_visit) ?  TRUE  :  FALSE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Carga DW hechos control acceso\Extrae del ODS"
               componentClassID="Microsoft.OLEDBSource"
@@ -200,6 +319,16 @@
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]"
                       name="person_pin"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].ExternalColumns[person_as_visit]"
+                      length="30"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]"
+                      name="person_as_visit"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -233,6 +362,11 @@
                       dataType="wstr"
                       length="30"
                       name="person_pin" />
+                    <externalMetadataColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].ExternalColumns[person_as_visit]"
+                      dataType="wstr"
+                      length="30"
+                      name="person_as_visit" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -277,6 +411,12 @@
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[person_pin]"
                       name="person_pin" />
                     <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[person_as_visit]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[person_as_visit]"
+                      name="person_as_visit" />
+                    <outputColumn
                       refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
@@ -320,8 +460,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
               endId="Package\Carga DW hechos control acceso\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+              name="Salida de columna derivada"
+              startId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
+              endId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -410,48 +555,86 @@
     design-time-name="Package\Carga DW hechos control acceso">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Carga DW hechos control acceso\Extrae del ODS"
-          TopLeft="5.5,5.5" />
+          TopLeft="50.5,8.5" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Carga DW hechos control acceso\Multidifusión"
-          TopLeft="265.5,92.5" />
+          Size="235,42"
+          Id="Package\Carga DW hechos control acceso\Agrea columna fuente del evento"
+          TopLeft="54.5,86.5" />
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
-          TopLeft="80.5,47.5">
+          TopLeft="125.5,50.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="254,45"
+              EndConnector="46.5,36"
               Start="0,0"
-              End="254,37.5">
+              End="46.5,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.5" />
+                    End="0,14" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.5"
-                    Point2="0,22.5"
-                    Point3="4,22.5" />
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
                   <mssgle:LineSegment
-                    End="250,22.5" />
+                    End="42.5,18" />
                   <mssgle:CubicBezierSegment
-                    Point1="250,22.5"
-                    Point2="254,22.5"
-                    Point3="254,26.5" />
+                    Point1="42.5,18"
+                    Point2="46.5,18"
+                    Point3="46.5,22" />
                   <mssgle:LineSegment
-                    End="254,37.5" />
+                    End="46.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Carga DW hechos control acceso\Multidifusión"
+          TopLeft="131.5,195.5" />
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
+          TopLeft="172,128.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5,67"
+              Start="0,0"
+              End="28.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="4,33.5" />
+                  <mssgle:LineSegment
+                    End="24.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5,33.5"
+                    Point2="28.5,33.5"
+                    Point3="28.5,37.5" />
+                  <mssgle:LineSegment
+                    End="28.5,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="119,27.5,16,16"
+              BoundingBox="6.25,38.5,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
