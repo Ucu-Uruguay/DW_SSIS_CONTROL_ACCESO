@@ -11,11 +11,23 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{332C0BA7-0D77-469A-8336-11D83CDC4C6E}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{A2EC9280-F3F8-4D15-938F-3C6B9420AA67}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CONTROL_ACCESO.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{5CCADA1B-4CE0-4113-87F3-3FA6CFE5B742}"
+      DTS:ObjectName="CONTROL_ACCESO.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\ETL UCU\REGISTRO_ERRORES\CONTROL_ACCESO.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
       DTS:CreationName="OLEDB"
@@ -34,14 +46,32 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoVSr5uFOjU+fjvlQXR4TQwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACdW34Fo6QfPcs25OCICbF3AAAAAASAAACgAAAAEAAAAFtQq6QR/WNbrvoWlc0jChkYAAAASOk4/VnkTvugBth9SEoUvu60reSSsRNyFAAAANlxxwCmaW9Y5C8TKn/hVmgp21YC</DTS:Password>
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="DnlIPhOWIC4="
+            IV="oddx9zzntfIaN6OSH3BuIQ==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+            <CipherData>
+              <CipherValue>oddx9zzntfIaN6OSH3BuIWkMYyXrQG7RdQz5aOtXl+W6NWNSyin/nrkmvAyTLqre33OkJYvlL2xTRJh8twp1pWgWP08frsaKAaCNXHD7O2UO/b9wsY/wcdHO74i8wOIApAHpYrXbdW52Kk3hu5DJRzJw9xH/gpGWPqXHAjrzKXRkbSU899WLB9ShukKqC6zI</CipherValue>
+            </CipherData>
+          </EncryptedData>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="CONTROL_ACCESO.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Escribe entradas del registro sobre eventos en un archivo CSV"
+      DTS:DTSID="{F0DE2CD5-F2B7-4321-9E53-EC693CF59700}"
+      DTS:ObjectName="Proveedor de registro SSIS para archivos de texto">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -67,6 +97,35 @@ FROM ODS_ZK_acc_transaction acct
 	left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt; '21/06/2022 13:57:22'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{F0DE2CD5-F2B7-4321-9E53-EC693CF59700}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Carga DW hechos control acceso"
@@ -78,6 +137,8 @@ FROM ODS_ZK_acc_transaction acct
       DTS:ObjectName="Carga DW hechos control acceso"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -3229,6 +3290,8 @@ order by documento_nro</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DD3F5C44-BD8B-4A5C-A524-B30B9144F780}"
@@ -3765,14 +3828,6 @@ order by documento_nro</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga DW hechos control acceso\Extrae del ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Carga DW hechos control acceso\DT_DOCENTE">
     <Properties>
       <Property>
@@ -3782,6 +3837,14 @@ order by documento_nro</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga DW hechos control acceso\Extrae del ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
