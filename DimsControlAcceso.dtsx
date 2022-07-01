@@ -12,11 +12,22 @@
   DTS:ObjectName="DimsControlAcceso"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{A0401459-70FD-45A8-BFAA-0D5FECCB9E87}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{7074CD07-826E-42F1-8032-385C742731A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CONTROL_ACCESO.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{7CAF502F-63F9-47A8-953D-DE7812F567BE}"
+      DTS:ObjectName="CONTROL_ACCESO.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\ETL UCU\REGISTRO_ERRORES\CONTROL_ACCESO.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
       DTS:CreationName="OLEDB"
@@ -37,19 +48,60 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="AUhTWumaSfo="
-            IV="Lwt4xT2DgYud2zQ9KAgsBA==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="MAEl6Z84j1o="
+            IV="wRYZhXNXT7fsMfCJEkZYmQ==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>Lwt4xT2DgYud2zQ9KAgsBMvGT4YnKifumz3cWGj48gWz2/FwFlOQ4Ao9A1frJ6pr8RSYsP5H+IkbFj0gfltIkJAzScdRf08JXqGjSOOQJh8f3E1N7lZeC0gIyDu3/UHqmJt9n6/DhoPbXeDzTW/y6aU16NP5gPqmteai7EzOoOCa6xLh11YxFm7raSh00zcZ</CipherValue>
+              <CipherValue>wRYZhXNXT7fsMfCJEkZYmeULS2fwqIvYjftoy/8VbUFvLniaMofAaWxPED0R0uG6eQyquqxaj8IWmF/o8tGfsAVR8d4DuZ56YdM6LYbWR2L7GaZvMJ7EnM5WcBdZV7APAF09uFPOsXv5BDTlObdJ3ESFVpcQkX4VNx79no/0/uo8/u72dtdOfcPEm/0fz4HY</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="CONTROL_ACCESO.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Escribe entradas del registro sobre eventos en un archivo CSV"
+      DTS:DTSID="{3A17E91D-E541-40BD-8956-F53E379862ED}"
+      DTS:ObjectName="Proveedor de registro SSIS para archivos de texto">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{3A17E91D-E541-40BD-8956-F53E379862ED}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Areas"
@@ -60,8 +112,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Areas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -77,8 +131,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Departamentos"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -94,12 +150,31 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Devices"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE DT_CA_Device_Event&#xA;TRUNCATE TABLE DT_CA_Device" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Estudiantes"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{B5DBEB43-BDFB-466E-A14D-7AE4109B57AB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Estudiantes"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DT_CA_Estudiante" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -112,6 +187,8 @@
       DTS:ObjectName="ETL DT_CA_Area"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -532,6 +609,8 @@
       DTS:ObjectName="ETL DT_CA_Departamento"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -981,6 +1060,8 @@
       DTS:ObjectName="ETL DT_CA_Device"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -1498,6 +1579,8 @@
       DTS:ObjectName="ETL DT_CA_Device_Event"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -1962,6 +2045,542 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\ETL DT_CA_Estudiante"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{020BF657-090F-477C-BCED-D87E337363CD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL DT_CA_Estudiante"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Carga DT_CA_Estudiante"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[DT_CA_Estudiante]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[FECHA_INICIO]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA_INICIO"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[FECHA_INICIO]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_INICIO]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[FECHA_FIN]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA_FIN"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[FECHA_FIN]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_FIN]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[ESTADO]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="ESTADO"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[ESTADO]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[ESTADO]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[EMPLID]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="EMPLID"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[EMPLID]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[EMPLID]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[NATIONAL_ID_TYPE]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="NATIONAL_ID_TYPE"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_doc]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID_TYPE]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[NATIONAL_ID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="NATIONAL_ID"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_doc]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[FIRST_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="FIRST_NAME"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FIRST_NAME]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[MIDDLE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="MIDDLE_NAME"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[seg_nombre]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[MIDDLE_NAME]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[LAST_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="LAST_NAME"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[LAST_NAME]" />
+                    <inputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].Columns[SECOND_LAST_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="SECOND_LAST_NAME"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[seg_apellido]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[SECOND_LAST_NAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[FECHA_INICIO]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_INICIO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[FECHA_FIN]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_FIN" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[ESTADO]"
+                      dataType="wstr"
+                      length="1"
+                      name="ESTADO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[EMPLID]"
+                      dataType="wstr"
+                      length="11"
+                      name="EMPLID" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[tipo_doc]"
+                      dataType="wstr"
+                      length="6"
+                      name="tipo_doc" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_doc]"
+                      dataType="wstr"
+                      length="20"
+                      name="nro_doc" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[seg_nombre]"
+                      dataType="wstr"
+                      length="30"
+                      name="seg_nombre" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="30"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB].ExternalColumns[seg_apellido]"
+                      dataType="wstr"
+                      length="30"
+                      name="seg_apellido" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Extrae ODS_ZK_Estudiantes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[ODS_ZK_Estudiantes]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_INICIO]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FECHA_INICIO]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_INICIO]"
+                      name="FECHA_INICIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_FIN]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FECHA_FIN]"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FECHA_FIN]"
+                      name="FECHA_FIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[ESTADO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[ESTADO]"
+                      length="1"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[ESTADO]"
+                      name="ESTADO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[EMPLID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[EMPLID]"
+                      length="11"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[EMPLID]"
+                      name="EMPLID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID_TYPE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[NATIONAL_ID_TYPE]"
+                      length="6"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID_TYPE]"
+                      name="NATIONAL_ID_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[NATIONAL_ID]"
+                      length="20"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[NATIONAL_ID]"
+                      name="NATIONAL_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FIRST_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FIRST_NAME]"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[FIRST_NAME]"
+                      name="FIRST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[MIDDLE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[MIDDLE_NAME]"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[MIDDLE_NAME]"
+                      name="MIDDLE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[LAST_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[LAST_NAME]"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[LAST_NAME]"
+                      name="LAST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[SECOND_LAST_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[SECOND_LAST_NAME]"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].Columns[SECOND_LAST_NAME]"
+                      name="SECOND_LAST_NAME"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FECHA_INICIO]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_INICIO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FECHA_FIN]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_FIN" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[ESTADO]"
+                      dataType="wstr"
+                      length="1"
+                      name="ESTADO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[EMPLID]"
+                      dataType="wstr"
+                      length="11"
+                      name="EMPLID" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[NATIONAL_ID_TYPE]"
+                      dataType="wstr"
+                      length="6"
+                      name="NATIONAL_ID_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[NATIONAL_ID]"
+                      dataType="wstr"
+                      length="20"
+                      name="NATIONAL_ID" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[FIRST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="FIRST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[MIDDLE_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="MIDDLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[LAST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="LAST_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB].ExternalColumns[SECOND_LAST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="SECOND_LAST_NAME" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FECHA_INICIO]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FECHA_INICIO]"
+                      name="FECHA_INICIO" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FECHA_FIN]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FECHA_FIN]"
+                      name="FECHA_FIN" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ESTADO]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ESTADO]"
+                      name="ESTADO" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[EMPLID]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[EMPLID]"
+                      name="EMPLID" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[NATIONAL_ID_TYPE]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[NATIONAL_ID_TYPE]"
+                      name="NATIONAL_ID_TYPE" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[NATIONAL_ID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[NATIONAL_ID]"
+                      name="NATIONAL_ID" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FIRST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[FIRST_NAME]"
+                      name="FIRST_NAME" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[MIDDLE_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[MIDDLE_NAME]"
+                      name="MIDDLE_NAME" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[LAST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[LAST_NAME]"
+                      name="LAST_NAME" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[SECOND_LAST_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[SECOND_LAST_NAME]"
+                      name="SECOND_LAST_NAME" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL DT_CA_Estudiante.Paths[Salida de origen de OLE DB]"
+              endId="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\ETL DT_CA_Nivel"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
@@ -1971,6 +2590,8 @@
       DTS:ObjectName="ETL DT_CA_Nivel"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -2357,6 +2978,8 @@
       DTS:ObjectName="ETL DT_CA_Nivel_Puerta"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -2743,6 +3366,8 @@
       DTS:ObjectName="ETL DT_CA_Persona"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -3328,6 +3953,8 @@
       DTS:ObjectName="ETL DT_CA_Puerta"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -3927,6 +4554,8 @@
       DTS:ObjectName="ETL DT_CA_Reader"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -4371,6 +5000,8 @@
       DTS:ObjectName="ETL DT_CA_Visitante"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -4898,6 +5529,8 @@
       DTS:ObjectName="ETL DT_CA_Zona"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -5317,8 +5950,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Personas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="6">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -5334,8 +5969,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Puerta"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -5351,8 +5988,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Readers"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="7">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -5368,8 +6007,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Visitantes"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="8">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -5385,8 +6026,10 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Zonas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="5">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
@@ -5419,6 +6062,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 10"
       DTS:To="Package\ETL DT_CA_Nivel_Puerta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0745F0B-2C7B-4500-81CF-A1C5352CAE26}"
+      DTS:From="Package\Estudiantes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 11"
+      DTS:To="Package\ETL DT_CA_Estudiante" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
@@ -5495,15 +6146,91 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Areas"
+          TopLeft="90.5,247.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Departamentos"
+          TopLeft="44.5,129.5" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Devices"
+          TopLeft="80.5,315.98" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Estudiantes"
+          TopLeft="61.5,493.5" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\ETL DT_CA_Area"
+          TopLeft="245.5,244.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\ETL DT_CA_Departamento"
+          TopLeft="245.5,129.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\ETL DT_CA_Device"
+          TopLeft="245.5,315.98" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\ETL DT_CA_Device_Event"
+          TopLeft="484.5,315.98" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\ETL DT_CA_Estudiante"
+          TopLeft="256.5,493.654128440367" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\ETL DT_CA_Nivel"
+          TopLeft="484.5,430.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\ETL DT_CA_Nivel_Puerta"
+          TopLeft="698.5,430.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\ETL DT_CA_Persona"
+          TopLeft="245.5,69.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\ETL DT_CA_Puerta"
+          TopLeft="245.5,430.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ETL DT_CA_Reader"
+          TopLeft="245.5,378.529787234043" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\ETL DT_CA_Visitante"
+          TopLeft="245.5,9.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\ETL DT_CA_Zona"
+          TopLeft="245.5,181.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Personas"
+          TopLeft="74.5,69.5" />
+        <NodeLayout
+          Size="109,42"
+          Id="Package\Puerta"
+          TopLeft="86.5,430.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Readers"
+          TopLeft="78.5,374.5" />
         <NodeLayout
           Size="124,42"
           Id="Package\Visitantes"
           TopLeft="71.5,9.5" />
         <NodeLayout
-          Size="178,42"
-          Id="Package\ETL DT_CA_Visitante"
-          TopLeft="245.5,9.5" />
+          Size="107,42"
+          Id="Package\Zonas"
+          TopLeft="88.5,181.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="195.5,30.5">
@@ -5526,14 +6253,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Personas"
-          TopLeft="74.5,69.5" />
-        <NodeLayout
-          Size="175,42"
-          Id="Package\ETL DT_CA_Persona"
-          TopLeft="245.5,69.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="195.5,90.5">
@@ -5556,14 +6275,50 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Departamentos"
-          TopLeft="44.5,129.5" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\ETL DT_CA_Departamento"
-          TopLeft="245.5,129.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 10]"
+          TopLeft="645.5,451.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53,0"
+              Start="0,0"
+              End="45.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 11]"
+          TopLeft="194.5,514.577064220184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62,0"
+              Start="0,0"
+              End="54.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="195.5,150.5">
@@ -5586,14 +6341,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="107,42"
-          Id="Package\Zonas"
-          TopLeft="88.5,181.5" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\ETL DT_CA_Zona"
-          TopLeft="245.5,181.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="195.5,202.5">
@@ -5616,14 +6363,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="105,42"
-          Id="Package\Areas"
-          TopLeft="90.5,247.5" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\ETL DT_CA_Area"
-          TopLeft="245.5,244.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="195.5,267">
@@ -5646,17 +6385,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="115,42"
-          Id="Package\Devices"
-          TopLeft="80.5,317.5" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\ETL DT_CA_Device"
-          TopLeft="245.5,315.98" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 5]"
-          TopLeft="195.5,337.74">
+          TopLeft="195.5,336.98">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5676,24 +6407,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\ETL DT_CA_Device_Event"
-          TopLeft="486.5,316.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 6]"
-          TopLeft="414.5,337.24">
+          TopLeft="414.5,336.98">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72,0"
+              EndConnector="70,0"
               Start="0,0"
-              End="64.5,0">
+              End="62.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="64.5,0" />
+                    End="62.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5702,28 +6429,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="117,42"
-          Id="Package\Readers"
-          TopLeft="70.5,374.5" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\ETL DT_CA_Reader"
-          TopLeft="246.5,378.529787234043" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 7]"
-          TopLeft="187.5,397.514893617021">
+          TopLeft="195.5,397.514893617021">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="59,0"
+              EndConnector="50,0"
               Start="0,0"
-              End="51.5,0">
+              End="42.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="51.5,0" />
+                    End="42.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5732,28 +6451,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="109,42"
-          Id="Package\Puerta"
-          TopLeft="73.5,430.5" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\ETL DT_CA_Puerta"
-          TopLeft="250.5,430.7" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 8]"
-          TopLeft="182.5,451.6">
+          TopLeft="195.5,451.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="68,0"
+              EndConnector="50,0"
               Start="0,0"
-              End="60.5,0">
+              End="42.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="60.5,0" />
+                    End="42.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5762,50 +6473,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="197,42"
-          Id="Package\ETL DT_CA_Nivel_Puerta"
-          TopLeft="698.5,437.5" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\ETL DT_CA_Nivel"
-          TopLeft="484.5,436.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 9]"
-          TopLeft="418.5,454.6">
+          TopLeft="413.5,451.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66,0"
+              EndConnector="71,0"
               Start="0,0"
-              End="58.5,0">
+              End="63.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="58.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 10]"
-          TopLeft="645.5,458">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="53,0"
-              Start="0,0"
-              End="45.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="45.5,0" />
+                    End="63.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5818,44 +6499,44 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\ETL DT_CA_Visitante">
+    design-time-name="Package\ETL DT_CA_Area">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="203,42"
-          Id="Package\ETL DT_CA_Visitante\Extrae ODS_ZK_vis_visitor"
+          Size="204,42"
+          Id="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="188,42"
-          Id="Package\ETL DT_CA_Visitante\Carga DT_CA_Visitante"
-          TopLeft="104.5,124.5" />
+          Size="169,42"
+          Id="Package\ETL DT_CA_Area\Carga DT_CA_Area"
+          TopLeft="111.5,99.5" />
         <EdgeLayout
-          Id="Package\ETL DT_CA_Visitante.Paths[Salida de origen de OLE DB]"
-          TopLeft="107,47.5">
+          Id="Package\ETL DT_CA_Area.Paths[Salida de origen de OLE DB]"
+          TopLeft="107.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="91.5,77"
+              EndConnector="88.5,52"
               Start="0,0"
-              End="91.5,69.5">
+              End="88.5,44.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.5"
-                    Point2="0,38.5"
-                    Point3="4,38.5" />
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
                   <mssgle:LineSegment
-                    End="87.5,38.5" />
+                    End="84.5,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="87.5,38.5"
-                    Point2="91.5,38.5"
-                    Point3="91.5,42.5" />
+                    Point1="84.5,26"
+                    Point2="88.5,26"
+                    Point3="88.5,30" />
                   <mssgle:LineSegment
-                    End="91.5,69.5" />
+                    End="88.5,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5868,7 +6549,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Visitante\Extrae ODS_ZK_vis_visitor">
+    design-time-name="Package\ETL DT_CA_Area\Carga DT_CA_Area">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5881,86 +6562,10 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Visitante\Carga DT_CA_Visitante">
+    design-time-name="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ETL DT_CA_Persona">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="210,42"
-          Id="Package\ETL DT_CA_Persona\Extrae ODS_ZK_per_person"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\ETL DT_CA_Persona\Carga DT_CA_Persona"
-          TopLeft="89.5,116.5" />
-        <EdgeLayout
-          Id="Package\ETL DT_CA_Persona.Paths[Salida de origen de OLE DB]"
-          TopLeft="110.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="71.5,69"
-              Start="0,0"
-              End="71.5,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.5"
-                    Point2="0,34.5"
-                    Point3="4,34.5" />
-                  <mssgle:LineSegment
-                    End="67.5,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="67.5,34.5"
-                    Point2="71.5,34.5"
-                    Point3="71.5,38.5" />
-                  <mssgle:LineSegment
-                    End="71.5,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Persona\Extrae ODS_ZK_per_person">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Persona\Carga DT_CA_Persona">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6015,14 +6620,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Departamento\Extrae ODS_ZK_auth_department">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\ETL DT_CA_Departamento\Carga DT_CA_Departamento">
     <Properties>
       <Property>
@@ -6035,145 +6632,11 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ETL DT_CA_Zona">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="200,42"
-          Id="Package\ETL DT_CA_Zona\Extrae ODS_ZK_acc_zone"
-          TopLeft="4.5,5.5" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\ETL DT_CA_Zona\Carga DT_CA_Zona"
-          TopLeft="117.5,113.5" />
-        <EdgeLayout
-          Id="Package\ETL DT_CA_Zona.Paths[Salida de origen de OLE DB]"
-          TopLeft="104.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98.5,66"
-              Start="0,0"
-              End="98.5,58.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29"
-                    Point2="0,33"
-                    Point3="4,33" />
-                  <mssgle:LineSegment
-                    End="94.5,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="94.5,33"
-                    Point2="98.5,33"
-                    Point3="98.5,37" />
-                  <mssgle:LineSegment
-                    End="98.5,58.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Zona\Extrae ODS_ZK_acc_zone">
+    design-time-name="Package\ETL DT_CA_Departamento\Extrae ODS_ZK_auth_department">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Zona\Carga DT_CA_Zona">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ETL DT_CA_Area">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="204,42"
-          Id="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\ETL DT_CA_Area\Carga DT_CA_Area"
-          TopLeft="111.5,99.5" />
-        <EdgeLayout
-          Id="Package\ETL DT_CA_Area.Paths[Salida de origen de OLE DB]"
-          TopLeft="107.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88.5,52"
-              Start="0,0"
-              End="88.5,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
-                  <mssgle:LineSegment
-                    End="84.5,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="84.5,26"
-                    Point2="88.5,26"
-                    Point3="88.5,30" />
-                  <mssgle:LineSegment
-                    End="88.5,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Area\Carga DT_CA_Area">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6228,14 +6691,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Device\Extrae ODS_ZK_acc_device">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\ETL DT_CA_Device\Carga DT_CA_Device">
     <Properties>
       <Property>
@@ -6245,6 +6700,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Device\Extrae ODS_ZK_acc_device">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6299,14 +6762,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Device_Event\Extrae ODS_ZK_acc_device_event">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\ETL DT_CA_Device_Event\Carga DT_CA_Device_Event">
     <Properties>
       <Property>
@@ -6319,45 +6774,53 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Device_Event\Extrae ODS_ZK_acc_device_event">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\ETL DT_CA_Reader">
+    design-time-name="Package\ETL DT_CA_Estudiante">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
-          Id="Package\ETL DT_CA_Reader\Extrae ODS_ZK_Reader"
+          Size="211,42"
+          Id="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes"
           TopLeft="5.5,5.5" />
         <NodeLayout
-          Size="181,42"
-          Id="Package\ETL DT_CA_Reader\Carga DT_CA_Reader"
-          TopLeft="128.5,134.5" />
+          Size="197,42"
+          Id="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante"
+          TopLeft="147.5,154.5" />
         <EdgeLayout
-          Id="Package\ETL DT_CA_Reader.Paths[Salida de origen de OLE DB]"
-          TopLeft="100.5,47.5">
+          Id="Package\ETL DT_CA_Estudiante.Paths[Salida de origen de OLE DB]"
+          TopLeft="111,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="118.5,87"
+              EndConnector="135,107"
               Start="0,0"
-              End="118.5,79.5">
+              End="135,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
+                    End="0,49.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.5"
-                    Point2="0,43.5"
-                    Point3="4,43.5" />
+                    Point1="0,49.5"
+                    Point2="0,53.5"
+                    Point3="4,53.5" />
                   <mssgle:LineSegment
-                    End="114.5,43.5" />
+                    End="131,53.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="114.5,43.5"
-                    Point2="118.5,43.5"
-                    Point3="118.5,47.5" />
+                    Point1="131,53.5"
+                    Point2="135,53.5"
+                    Point3="135,57.5" />
                   <mssgle:LineSegment
-                    End="118.5,79.5" />
+                    End="135,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6370,15 +6833,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Reader\Extrae ODS_ZK_Reader">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Reader\Carga DT_CA_Reader">
+    design-time-name="Package\ETL DT_CA_Estudiante\Carga DT_CA_Estudiante">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6390,137 +6845,8 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ETL DT_CA_Puerta">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="199,42"
-          Id="Package\ETL DT_CA_Puerta\Extrae ODS_ZK_acc_door"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\ETL DT_CA_Puerta\Carga DT_CA_Puerta"
-          TopLeft="119.5,107.5" />
-        <EdgeLayout
-          Id="Package\ETL DT_CA_Puerta.Paths[Salida de origen de OLE DB]"
-          TopLeft="105,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="103.5,60"
-              Start="0,0"
-              End="103.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="99.5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="99.5,30"
-                    Point2="103.5,30"
-                    Point3="103.5,34" />
-                  <mssgle:LineSegment
-                    End="103.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Puerta\Extrae ODS_ZK_acc_door">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Puerta\Carga DT_CA_Puerta">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ETL DT_CA_Nivel_Puerta">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="227,42"
-          Id="Package\ETL DT_CA_Nivel_Puerta\Extrae ODS_ZK_acc_level_door"
-          TopLeft="5.5,60.5" />
-        <NodeLayout
-          Size="207,45"
-          Id="Package\ETL DT_CA_Nivel_Puerta\Carga DT_CA_Nivel_Puerta"
-          TopLeft="121.5,159.5" />
-        <EdgeLayout
-          Id="Package\ETL DT_CA_Nivel_Puerta.Paths[Salida de origen de OLE DB]"
-          TopLeft="119,102.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="106,57"
-              Start="0,0"
-              End="106,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="4,28.5" />
-                  <mssgle:LineSegment
-                    End="102,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="102,28.5"
-                    Point2="106,28.5"
-                    Point3="106,32.5" />
-                  <mssgle:LineSegment
-                    End="106,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Nivel_Puerta\Extrae ODS_ZK_acc_level_door">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Nivel_Puerta\Carga DT_CA_Nivel_Puerta">
+    design-time-name="Package\ETL DT_CA_Estudiante\Extrae ODS_ZK_Estudiantes">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6583,14 +6909,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ETL DT_CA_Nivel\Extrae ODS_ZK_acc_level">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\ETL DT_CA_Nivel\Carga DT_CA_Nivel">
     <Properties>
       <Property>
@@ -6600,6 +6918,445 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Nivel\Extrae ODS_ZK_acc_level">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Nivel_Puerta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\ETL DT_CA_Nivel_Puerta\Extrae ODS_ZK_acc_level_door"
+          TopLeft="5.5,60.5" />
+        <NodeLayout
+          Size="207,45"
+          Id="Package\ETL DT_CA_Nivel_Puerta\Carga DT_CA_Nivel_Puerta"
+          TopLeft="121.5,159.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Nivel_Puerta.Paths[Salida de origen de OLE DB]"
+          TopLeft="119,102.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106,57"
+              Start="0,0"
+              End="106,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="102,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="102,28.5"
+                    Point2="106,28.5"
+                    Point3="106,32.5" />
+                  <mssgle:LineSegment
+                    End="106,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Nivel_Puerta\Carga DT_CA_Nivel_Puerta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Nivel_Puerta\Extrae ODS_ZK_acc_level_door">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Persona">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\ETL DT_CA_Persona\Extrae ODS_ZK_per_person"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\ETL DT_CA_Persona\Carga DT_CA_Persona"
+          TopLeft="89.5,116.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Persona.Paths[Salida de origen de OLE DB]"
+          TopLeft="110.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.5,69"
+              Start="0,0"
+              End="71.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="67.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.5,34.5"
+                    Point2="71.5,34.5"
+                    Point3="71.5,38.5" />
+                  <mssgle:LineSegment
+                    End="71.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Persona\Carga DT_CA_Persona">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Persona\Extrae ODS_ZK_per_person">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Puerta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\ETL DT_CA_Puerta\Extrae ODS_ZK_acc_door"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\ETL DT_CA_Puerta\Carga DT_CA_Puerta"
+          TopLeft="119.5,107.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Puerta.Paths[Salida de origen de OLE DB]"
+          TopLeft="105,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.5,60"
+              Start="0,0"
+              End="103.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="99.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.5,30"
+                    Point2="103.5,30"
+                    Point3="103.5,34" />
+                  <mssgle:LineSegment
+                    End="103.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Puerta\Carga DT_CA_Puerta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Puerta\Extrae ODS_ZK_acc_door">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Reader">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\ETL DT_CA_Reader\Extrae ODS_ZK_Reader"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\ETL DT_CA_Reader\Carga DT_CA_Reader"
+          TopLeft="128.5,134.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Reader.Paths[Salida de origen de OLE DB]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118.5,87"
+              Start="0,0"
+              End="118.5,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5"
+                    Point2="0,43.5"
+                    Point3="4,43.5" />
+                  <mssgle:LineSegment
+                    End="114.5,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.5,43.5"
+                    Point2="118.5,43.5"
+                    Point3="118.5,47.5" />
+                  <mssgle:LineSegment
+                    End="118.5,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Reader\Carga DT_CA_Reader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Reader\Extrae ODS_ZK_Reader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Visitante">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\ETL DT_CA_Visitante\Extrae ODS_ZK_vis_visitor"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\ETL DT_CA_Visitante\Carga DT_CA_Visitante"
+          TopLeft="104.5,124.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Visitante.Paths[Salida de origen de OLE DB]"
+          TopLeft="107,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.5,77"
+              Start="0,0"
+              End="91.5,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="87.5,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.5,38.5"
+                    Point2="91.5,38.5"
+                    Point3="91.5,42.5" />
+                  <mssgle:LineSegment
+                    End="91.5,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Visitante\Carga DT_CA_Visitante">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Visitante\Extrae ODS_ZK_vis_visitor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL DT_CA_Zona">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\ETL DT_CA_Zona\Extrae ODS_ZK_acc_zone"
+          TopLeft="4.5,5.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ETL DT_CA_Zona\Carga DT_CA_Zona"
+          TopLeft="117.5,113.5" />
+        <EdgeLayout
+          Id="Package\ETL DT_CA_Zona.Paths[Salida de origen de OLE DB]"
+          TopLeft="104.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.5,66"
+              Start="0,0"
+              End="98.5,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29"
+                    Point2="0,33"
+                    Point3="4,33" />
+                  <mssgle:LineSegment
+                    End="94.5,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,33"
+                    Point2="98.5,33"
+                    Point3="98.5,37" />
+                  <mssgle:LineSegment
+                    End="98.5,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Zona\Carga DT_CA_Zona">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL DT_CA_Zona\Extrae ODS_ZK_acc_zone">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
