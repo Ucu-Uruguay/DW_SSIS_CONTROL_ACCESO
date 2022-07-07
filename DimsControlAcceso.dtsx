@@ -12,8 +12,8 @@
   DTS:ObjectName="DimsControlAcceso"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{7074CD07-826E-42F1-8032-385C742731A1}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{288A89FD-6B98-4D8F-96F6-77E2CFB4A82D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,12 +48,12 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="MAEl6Z84j1o="
-            IV="wRYZhXNXT7fsMfCJEkZYmQ==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="vh4s24FGspU="
+            IV="zITlQ9rcdVY7zNY3FDjRTg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>wRYZhXNXT7fsMfCJEkZYmeULS2fwqIvYjftoy/8VbUFvLniaMofAaWxPED0R0uG6eQyquqxaj8IWmF/o8tGfsAVR8d4DuZ56YdM6LYbWR2L7GaZvMJ7EnM5WcBdZV7APAF09uFPOsXv5BDTlObdJ3ESFVpcQkX4VNx79no/0/uo8/u72dtdOfcPEm/0fz4HY</CipherValue>
+              <CipherValue>zITlQ9rcdVY7zNY3FDjRToA3tJga1em3PjRgTJtBiVN8oB+/+T7mdLq58ui0govM+72tiLmHaVroOnTSq4sANWj8TJ6VumfxWdPUADKM/Bn60VMuIR4LBuUaj1Xx6g/ZGfF3/ZMBk6xQrnCLkJAurCBRWKeisoOqubTCycWsMpmznZLxIfx64O/yavTfcVVb</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
@@ -112,7 +112,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Areas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -131,7 +131,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Departamentos"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -169,7 +169,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Estudiantes"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -301,12 +301,12 @@
                       externalMetadataColumnId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
                       lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[nombre]" />
                     <inputColumn
-                      refId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].Columns[id_zona_padre]"
+                      refId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].Columns[id_area_padre]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="id_zona_padre"
-                      externalMetadataColumnId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_zona_padre]"
-                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_zona_padre]" />
+                      cachedName="id_area_padre"
+                      externalMetadataColumnId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_area_padre]"
+                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_area_padre]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -336,10 +336,10 @@
                       length="100"
                       name="nombre" />
                     <externalMetadataColumn
-                      refId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_zona_padre]"
+                      refId="Package\ETL DT_CA_Area\Carga DT_CA_Area.Inputs[Entrada de destino de OLE DB].ExternalColumns[id_area_padre]"
                       dataType="wstr"
                       length="50"
-                      name="id_zona_padre" />
+                      name="id_area_padre" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -398,7 +398,7 @@
       ,[update_time] fecha_ult_act
       ,[code]
       ,[name] nombre
-      ,[parent_id] id_zona_padre
+      ,[parent_id] id_area_padre
   FROM [ODS_UCU].[dbo].[ODS_ZK_auth_area]</property>
                 <property
                   dataType="System.String"
@@ -486,14 +486,14 @@
                       name="nombre"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_zona_padre]"
+                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_area_padre]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].ExternalColumns[id_zona_padre]"
+                      externalMetadataColumnId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].ExternalColumns[id_area_padre]"
                       length="50"
-                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_zona_padre]"
-                      name="id_zona_padre"
+                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].Columns[id_area_padre]"
+                      name="id_area_padre"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -524,10 +524,10 @@
                       length="100"
                       name="nombre" />
                     <externalMetadataColumn
-                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].ExternalColumns[id_zona_padre]"
+                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de origen de OLE DB].ExternalColumns[id_area_padre]"
                       dataType="wstr"
                       length="50"
-                      name="id_zona_padre" />
+                      name="id_area_padre" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -566,11 +566,11 @@
                       lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
                       name="nombre" />
                     <outputColumn
-                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[id_zona_padre]"
+                      refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[id_area_padre]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[id_zona_padre]"
-                      name="id_zona_padre" />
+                      lineageId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[id_area_padre]"
+                      name="id_area_padre" />
                     <outputColumn
                       refId="Package\ETL DT_CA_Area\Extrae ODS_ZK_auth_area.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -5969,7 +5969,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Puerta"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
@@ -6026,7 +6026,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Zonas"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0" />
