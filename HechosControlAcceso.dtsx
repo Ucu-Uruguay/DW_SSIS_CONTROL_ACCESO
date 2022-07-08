@@ -12,8 +12,8 @@
   DTS:ObjectName="HechosControlAcceso"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{1ABAEBE2-3F7E-46B9-B162-82046E269ED6}">
+  DTS:VersionBuild="73"
+  DTS:VersionGUID="{147A55F4-B5D6-4CD9-B8D6-45E1426C75A3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,12 +48,12 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="VuvqyGbslFk="
-            IV="faJkyha67evk5pwOyJ9PpA==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="R4WBw/AtLf8="
+            IV="KOXVMf0MJj/0lF0Gd1b5fQ==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>faJkyha67evk5pwOyJ9PpC5W/01kFaGWicbySi9eMYgRx2hacj91eeK2VhNFjk94Dpz0jkW9hEs4p1ulJpDKer9rsX85mQI5RJY4qJgpDhG1biW9krz3GjZXzr8R9iFF2o4y0w5k5qcDJvCHxTFoqRJT6dPEkYT8C2yDiCaNkgFbQQoox+ZFyer0bxzAOYlM</CipherValue>
+              <CipherValue>KOXVMf0MJj/0lF0Gd1b5fTe6vkQTC2abZ3cEzz3BxsdQDKFSlch7OeyuSftwCcGCQqetQcMtmkrMGF0NTOIRo6y++OTdimRaZFpbjmvrxiTqM9nU2d8g+yRqQrBdzFcVDPbOgYc4VK+nQJn+g0acx44q0Aao2ICPNDViA8KxYdl8/+xgIqqTGsRST7jeKv7o</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
@@ -194,6 +194,35 @@ FROM ODS_ZK_acc_transaction acct
                       cachedName="create_time"
                       cachedScale="6"
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[create_time]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[reader_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="reader_name"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[reader_name]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[reader_state]"
+                      cachedDataType="i2"
+                      cachedName="reader_state"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[reader_state]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[FINDSTRING](#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[reader_name]},"Buzone",1) &gt; 0 &amp;&amp; #{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[reader_state]} == 0 ? 1 : #{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[reader_state]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(reader_name,"Buzone",1) &gt; 0 &amp;&amp; reader_state == 0 ? 1 : reader_state</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7534,27 +7563,27 @@ ORDER BY pin</property>
               name="FuncsAlumnsLYS"
               startId="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS.Outputs[FuncsAlumnsLYS]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
               endId="Package\Carga DW hechos control acceso\División condicional Estudiantes.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\Carga DW hechos control acceso\Columna derivada.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
               endId="Package\Carga DW hechos control acceso\División condicional Docentes.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\Carga DW hechos control acceso\Si EMPLID no es nulo ROL D.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada4]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
               endId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 3]"
               name="Salida de columna derivada"
               startId="Package\Carga DW hechos control acceso\Si tiene departamento 105.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
               endId="Package\Carga DW hechos control acceso\División condicional Funcionarios.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\Carga DW hechos control acceso\Si EMPLID_FUNC no es nulo ROL F.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada4]"
               endId="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Outputs[Salida de columna derivada]" />
@@ -7585,11 +7614,21 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB4]"
+              endId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga DW hechos control acceso\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB3]"
+              endId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
               endId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga DW hechos control acceso\Personas y su departamento.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB3]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB1]"
               endId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\Carga DW hechos control acceso\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
@@ -7599,50 +7638,40 @@ ORDER BY pin</property>
               name="Salida de origen de OLE DB"
               startId="Package\Carga DW hechos control acceso\Estudiantes activos.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB1]"
-              endId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
-              name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB]" />
-            <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
-              name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
-            <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de Unión de todo 1]"
               endId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB]"
               name="Salida de Unión de todo 1"
               startId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional1]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional]"
               endId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 2]"
               name="Salida predeterminada de división condicional"
               startId="Package\Carga DW hechos control acceso\División condicional Docentes.Outputs[Salida predeterminada de división condicional]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional2]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional1]"
               endId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 4]"
               name="Salida predeterminada de división condicional"
               startId="Package\Carga DW hechos control acceso\División condicional Funcionarios.Outputs[Salida predeterminada de división condicional]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional3]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional2]"
               endId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 5]"
               name="Salida predeterminada de división condicional"
               startId="Package\Carga DW hechos control acceso\División condicional Estudiantes.Outputs[Salida predeterminada de división condicional]" />
             <path
-              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional]"
+              refId="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional3]"
               endId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 1]"
               name="Salida predeterminada de división condicional"
               startId="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS.Outputs[Salida predeterminada de división condicional]" />
-            <path
-              refId="Package\Carga DW hechos control acceso.Paths[SinRol]"
-              endId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada izquierda de combinación de mezcla]"
-              name="SinRol"
-              startId="Package\Carga DW hechos control acceso\División condicional Funcionarios.Outputs[SinRol]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[SinRol1]"
               endId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada izquierda de combinación de mezcla]"
               name="SinRol"
               startId="Package\Carga DW hechos control acceso\División condicional Docentes.Outputs[SinRol]" />
+            <path
+              refId="Package\Carga DW hechos control acceso.Paths[SinRol]"
+              endId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="SinRol"
+              startId="Package\Carga DW hechos control acceso\División condicional Funcionarios.Outputs[SinRol]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[SinRol2]"
               endId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada izquierda de combinación de mezcla]"
@@ -7742,6 +7771,62 @@ ORDER BY pin</property>
           Id="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso"
           TopLeft="932.5,461.658138056312" />
         <NodeLayout
+          Size="249,42"
+          Id="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio"
+          TopLeft="310.5,1173.5" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID"
+          TopLeft="86.5,313.5" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Carga DW hechos control acceso\Personas y su departamento"
+          TopLeft="452.5,1094.5" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Carga DW hechos control acceso\Columna derivada"
+          TopLeft="272.5,935.5" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Carga DW hechos control acceso\División condicional Funcionarios"
+          TopLeft="170.666666666667,752.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Carga DW hechos control acceso\Estudiantes activos"
+          TopLeft="421.5,795.5" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Carga DW hechos control acceso\Si EMPLID_FUNC no es nulo ROL F"
+          TopLeft="177.666666666667,676.630718511493" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Carga DW hechos control acceso\Extrae del ODS"
+          TopLeft="83.25,8.5" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST"
+          TopLeft="210.5,852.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Carga DW hechos control acceso\Ordenar"
+          TopLeft="62.6111111111111,241.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Carga DW hechos control acceso\División condicional Estudiantes"
+          TopLeft="286.5,1039.5" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Carga DW hechos control acceso\DT_DOCENTE"
+          TopLeft="214.5,240.388888888889" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Carga DW hechos control acceso\Unión de todo"
+          TopLeft="693.120353982301,468.723333333333" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Carga DW hechos control acceso\Funcionarios no docentes"
+          TopLeft="327.5,525.5" />
+        <NodeLayout
           Size="213,42"
           Id="Package\Carga DW hechos control acceso\Si EMPLID no es nulo ROL D"
           TopLeft="104.5,394.5" />
@@ -7750,61 +7835,593 @@ ORDER BY pin</property>
           Id="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC"
           TopLeft="157.166666666667,595.5" />
         <NodeLayout
-          Size="198,42"
-          Id="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS"
-          TopLeft="59.25,157.166666666667" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Carga DW hechos control acceso\Estudiantes activos"
-          TopLeft="421.5,795.5" />
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Carga DW hechos control acceso\Columna derivada"
-          TopLeft="272.5,935.5" />
-        <NodeLayout
-          Size="117,42"
-          Id="Package\Carga DW hechos control acceso\Ordenar"
-          TopLeft="62.6111111111111,241.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Carga DW hechos control acceso\Unión de todo"
-          TopLeft="693.120353982301,468.723333333333" />
-        <NodeLayout
-          Size="253,42"
-          Id="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID"
-          TopLeft="86.5,313.5" />
-        <NodeLayout
           Size="218,42"
           Id="Package\Carga DW hechos control acceso\División condicional Docentes"
           TopLeft="102.5,466.225490196078" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\Carga DW hechos control acceso\Extrae del ODS"
-          TopLeft="83.25,8.5" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Carga DW hechos control acceso\Funcionarios no docentes"
-          TopLeft="327.5,525.5" />
-        <NodeLayout
-          Size="243,42"
-          Id="Package\Carga DW hechos control acceso\Si EMPLID_FUNC no es nulo ROL F"
-          TopLeft="177.666666666667,676.630718511493" />
-        <NodeLayout
-          Size="274,42"
-          Id="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST"
-          TopLeft="210.5,852.5" />
-        <NodeLayout
-          Size="233,42"
-          Id="Package\Carga DW hechos control acceso\División condicional Funcionarios"
-          TopLeft="170.666666666667,752.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Carga DW hechos control acceso\DT_DOCENTE"
-          TopLeft="214.5,240.388888888889" />
+          Size="198,42"
+          Id="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS"
+          TopLeft="59.25,157.166666666667" />
         <NodeLayout
           Size="235,42"
           Id="Package\Carga DW hechos control acceso\Agrea columna fuente del evento"
           TopLeft="40.75,86.5" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Carga DW hechos control acceso\Si tiene departamento 105"
+          TopLeft="537.5,1271.15976821192" />
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada4]"
+          TopLeft="158.25,128.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.6666666666667"
+              Start="0,0"
+              End="0,21.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
+          TopLeft="299.166666666667,718.630718511493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.5,33.869281488507"
+              Start="0,0"
+              End="-49.5,26.369281488507">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1829733678315" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1829733678315"
+                    Point2="0,20.1829733678315"
+                    Point3="-4,20.1829733678315" />
+                  <mssgle:LineSegment
+                    End="-45.5,20.1829733678315" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.5,20.1829733678315"
+                    Point2="-49.5,20.1829733678315"
+                    Point3="-49.5,24.1829733678315" />
+                  <mssgle:LineSegment
+                    End="-49.5,26.369281488507" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
+          TopLeft="672.166666666667,1271.15976821192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.703687315634,-760.436434878587"
+              Start="0,0"
+              End="127.703687315634,-752.936434878587">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-89.1349824700519" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-89.1349824700519"
+                    Point2="0,-93.1349824700519"
+                    Point3="4,-93.1349824700519" />
+                  <mssgle:LineSegment
+                    End="123.703687315634,-93.1349824700519" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.703687315634,-93.1349824700519"
+                    Point2="127.703687315634,-93.1349824700519"
+                    Point3="127.703687315634,-97.1349824700519" />
+                  <mssgle:LineSegment
+                    End="127.703687315634,-752.936434878587" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
+          TopLeft="211.25,436.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.725490196078"
+              Start="0,0"
+              End="0,22.225490196078">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.225490196078" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
+          TopLeft="354.5,977.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.33333333333331,62"
+              Start="0,0"
+              End="9.33333333333331,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9407665505227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.9407665505227"
+                    Point2="0,36.9407665505227"
+                    Point3="4,36.9407665505227" />
+                  <mssgle:LineSegment
+                    End="5.33333333333331,36.9407665505227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.33333333333331,36.9407665505227"
+                    Point2="9.33333333333331,36.9407665505227"
+                    Point3="9.33333333333331,40.9407665505227" />
+                  <mssgle:LineSegment
+                    End="9.33333333333331,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[FuncsAlumnsLYS]"
+          TopLeft="123.847222222222,199.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.3333333333333"
+              Start="0,0"
+              End="0,34.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-37.53748046875,12.5421549479167,75.0749609375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[SinRol2]"
+          TopLeft="397.666666666667,1081.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.15279296875,37.37548828125,28.3055859375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[SinRol1]"
+          TopLeft="211.5,508.225490196078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.666666666667,87.274509803922"
+              Start="0,0"
+              End="41.666666666667,79.774509803922">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.0713461855333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.0713461855333"
+                    Point2="0,52.0713461855333"
+                    Point3="4,52.0713461855333" />
+                  <mssgle:LineSegment
+                    End="37.666666666667,52.0713461855333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.666666666667,52.0713461855333"
+                    Point2="41.666666666667,52.0713461855333"
+                    Point3="41.666666666667,56.0713461855333" />
+                  <mssgle:LineSegment
+                    End="41.666666666667,79.774509803922" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.6805403645835,57.0713461855333,28.3055859375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[SinRol]"
+          TopLeft="287.166666666667,794.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.9999999999997,58"
+              Start="0,0"
+              End="15.9999999999997,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5979680696662" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5979680696662"
+                    Point2="0,34.5979680696662"
+                    Point3="4,34.5979680696662" />
+                  <mssgle:LineSegment
+                    End="11.9999999999997,34.5979680696662" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.9999999999997,34.5979680696662"
+                    Point2="15.9999999999997,34.5979680696662"
+                    Point3="15.9999999999997,38.5979680696662" />
+                  <mssgle:LineSegment
+                    End="15.9999999999997,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.15279296875015,39.5979680696662,28.3055859375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional3]"
+          TopLeft="189.916666666667,199.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="575.703687315634,269.556666666666"
+              Start="0,0"
+              End="575.703687315634,262.056666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1191315965261" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1191315965261"
+                    Point2="0,24.1191315965261"
+                    Point3="4,24.1191315965261" />
+                  <mssgle:LineSegment
+                    End="571.703687315634,24.1191315965261" />
+                  <mssgle:CubicBezierSegment
+                    Point1="571.703687315634,24.1191315965261"
+                    Point2="575.703687315634,24.1191315965261"
+                    Point3="575.703687315634,28.1191315965261" />
+                  <mssgle:LineSegment
+                    End="575.703687315634,262.056666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="186.929050689067,29.1191315965261,201.8455859375,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional2]"
+          TopLeft="437.166666666667,1039.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="328.453687315634,-528.776666666667"
+              Start="0,0"
+              End="328.453687315634,-521.276666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-41.7215795586529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-41.7215795586529"
+                    Point2="0,-45.7215795586529"
+                    Point3="4,-45.7215795586529" />
+                  <mssgle:LineSegment
+                    End="324.453687315634,-45.7215795586529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="324.453687315634,-45.7215795586529"
+                    Point2="328.453687315634,-45.7215795586529"
+                    Point3="328.453687315634,-49.7215795586529" />
+                  <mssgle:LineSegment
+                    End="328.453687315634,-521.276666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="63.304050689067,-40.7215795586529,201.8455859375,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional1]"
+          TopLeft="324.666666666667,752.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="406.703687315634,-241.776666666667"
+              Start="0,0"
+              End="406.703687315634,-234.276666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-14.9806413073277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-14.9806413073277"
+                    Point2="0,-18.9806413073277"
+                    Point3="4,-18.9806413073277" />
+                  <mssgle:LineSegment
+                    End="402.703687315634,-18.9806413073277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="402.703687315634,-18.9806413073277"
+                    Point2="406.703687315634,-18.9806413073277"
+                    Point3="406.703687315634,-22.9806413073277" />
+                  <mssgle:LineSegment
+                    End="406.703687315634,-234.276666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="102.429050689067,-13.9806413073277,201.8455859375,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional]"
+          TopLeft="320.5,488.474411764706">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="372.620353982301,0"
+              Start="0,0"
+              End="365.120353982301,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="365.120353982301,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="81.6373840224005,5,201.8455859375,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de Unión de todo 1]"
+          TopLeft="838.120353982301,486.190735694822">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.379646017699,0"
+              Start="0,0"
+              End="86.879646017699,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.879646017699,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB4]"
+          TopLeft="287,282.388888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.1666666666667,31.1111111111111"
+              Start="0,0"
+              End="-33.1666666666667,23.6111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5493584708039" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5493584708039"
+                    Point2="0,18.5493584708039"
+                    Point3="-4,18.5493584708039" />
+                  <mssgle:LineSegment
+                    End="-29.1666666666667,18.5493584708039" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.1666666666667,18.5493584708039"
+                    Point2="-33.1666666666667,18.5493584708039"
+                    Point3="-33.1666666666667,22.5493584708039" />
+                  <mssgle:LineSegment
+                    End="-33.1666666666667,23.6111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB3]"
+          TopLeft="158.25,50.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB2]"
+          TopLeft="421.5,816.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.6666666666667,36"
+              Start="0,0"
+              End="-29.6666666666667,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-25.6666666666667,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.6666666666667,0"
+                    Point2="-29.6666666666667,0"
+                    Point3="-29.6666666666667,4" />
+                  <mssgle:LineSegment
+                    End="-29.6666666666667,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB1]"
+          TopLeft="427,567.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.8333333333333,28"
+              Start="0,0"
+              End="-81.8333333333333,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7058823529412" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7058823529412"
+                    Point2="0,16.7058823529412"
+                    Point3="-4,16.7058823529412" />
+                  <mssgle:LineSegment
+                    End="-77.8333333333333,16.7058823529412" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.8333333333333,16.7058823529412"
+                    Point2="-81.8333333333333,16.7058823529412"
+                    Point3="-81.8333333333333,20.7058823529412" />
+                  <mssgle:LineSegment
+                    End="-81.8333333333333,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
+          TopLeft="559,1136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.8333333333334,37"
+              Start="0,0"
+              End="-83.8333333333334,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0582601755786" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0582601755786"
+                    Point2="0,22.0582601755786"
+                    Point3="-4,22.0582601755786" />
+                  <mssgle:LineSegment
+                    End="-79.8333333333334,22.0582601755786" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.8333333333334,22.0582601755786"
+                    Point2="-83.8333333333334,22.0582601755786"
+                    Point3="-83.8333333333334,26.0582601755786" />
+                  <mssgle:LineSegment
+                    End="-83.8333333333334,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[Salida de ordenación]"
           TopLeft="121.111111111111,283.5">
@@ -7831,6 +8448,40 @@ ORDER BY pin</property>
                     Point3="51.0555555555556,21.8868813825609" />
                   <mssgle:LineSegment
                     End="51.0555555555556,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de combinación de mezcla3]"
+          TopLeft="435,1215.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.833333333333,55.6597682119204"
+              Start="0,0"
+              End="171.833333333333,48.1597682119204">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1359709588476" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1359709588476"
+                    Point2="0,33.1359709588476"
+                    Point3="4,33.1359709588476" />
+                  <mssgle:LineSegment
+                    End="167.833333333333,33.1359709588476" />
+                  <mssgle:CubicBezierSegment
+                    Point1="167.833333333333,33.1359709588476"
+                    Point2="171.833333333333,33.1359709588476"
+                    Point3="171.833333333333,37.1359709588476" />
+                  <mssgle:LineSegment
+                    End="171.833333333333,48.1597682119204" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7905,628 +8556,6 @@ ORDER BY pin</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
-          TopLeft="211.25,436.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.725490196078"
-              Start="0,0"
-              End="0,22.225490196078">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.225490196078" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
-          TopLeft="158.25,128.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.6666666666667"
-              Start="0,0"
-              End="0,21.1666666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.1666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
-          TopLeft="299.166666666667,718.630718511493">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-49.5,33.869281488507"
-              Start="0,0"
-              End="-49.5,26.369281488507">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.1829733678315" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.1829733678315"
-                    Point2="0,20.1829733678315"
-                    Point3="-4,20.1829733678315" />
-                  <mssgle:LineSegment
-                    End="-45.5,20.1829733678315" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-45.5,20.1829733678315"
-                    Point2="-49.5,20.1829733678315"
-                    Point3="-49.5,24.1829733678315" />
-                  <mssgle:LineSegment
-                    End="-49.5,26.369281488507" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[FuncsAlumnsLYS]"
-          TopLeft="123.847222222222,199.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.3333333333333"
-              Start="0,0"
-              End="0,34.8333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.8333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-37.53748046875,12.5421549479167,75.0749609375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[SinRol1]"
-          TopLeft="211.5,508.225490196078">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="41.666666666667,87.274509803922"
-              Start="0,0"
-              End="41.666666666667,79.774509803922">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.0713461855333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,48.0713461855333"
-                    Point2="0,52.0713461855333"
-                    Point3="4,52.0713461855333" />
-                  <mssgle:LineSegment
-                    End="37.666666666667,52.0713461855333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.666666666667,52.0713461855333"
-                    Point2="41.666666666667,52.0713461855333"
-                    Point3="41.666666666667,56.0713461855333" />
-                  <mssgle:LineSegment
-                    End="41.666666666667,79.774509803922" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="6.68054036458348,57.0713461855333,28.3055859375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[SinRol]"
-          TopLeft="287.166666666667,794.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15.9999999999997,58"
-              Start="0,0"
-              End="15.9999999999997,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5979680696662" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.5979680696662"
-                    Point2="0,34.5979680696662"
-                    Point3="4,34.5979680696662" />
-                  <mssgle:LineSegment
-                    End="11.9999999999997,34.5979680696662" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.9999999999997,34.5979680696662"
-                    Point2="15.9999999999997,34.5979680696662"
-                    Point3="15.9999999999997,38.5979680696662" />
-                  <mssgle:LineSegment
-                    End="15.9999999999997,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.15279296875017,39.5979680696662,28.3055859375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional2]"
-          TopLeft="324.666666666667,752.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="406.703687315634,-241.776666666667"
-              Start="0,0"
-              End="406.703687315634,-234.276666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-14.9806413073277" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-14.9806413073277"
-                    Point2="0,-18.9806413073277"
-                    Point3="4,-18.9806413073277" />
-                  <mssgle:LineSegment
-                    End="402.703687315634,-18.9806413073277" />
-                  <mssgle:CubicBezierSegment
-                    Point1="402.703687315634,-18.9806413073277"
-                    Point2="406.703687315634,-18.9806413073277"
-                    Point3="406.703687315634,-22.9806413073277" />
-                  <mssgle:LineSegment
-                    End="406.703687315634,-234.276666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="102.429050689067,-13.9806413073277,201.8455859375,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional1]"
-          TopLeft="320.5,488.474411764706">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="372.620353982301,0"
-              Start="0,0"
-              End="365.120353982301,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="365.120353982301,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="81.6373840224005,5,201.8455859375,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional]"
-          TopLeft="189.916666666667,199.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="575.703687315634,269.556666666666"
-              Start="0,0"
-              End="575.703687315634,262.056666666666">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.1191315965261" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.1191315965261"
-                    Point2="0,24.1191315965261"
-                    Point3="4,24.1191315965261" />
-                  <mssgle:LineSegment
-                    End="571.703687315634,24.1191315965261" />
-                  <mssgle:CubicBezierSegment
-                    Point1="571.703687315634,24.1191315965261"
-                    Point2="575.703687315634,24.1191315965261"
-                    Point3="575.703687315634,28.1191315965261" />
-                  <mssgle:LineSegment
-                    End="575.703687315634,262.056666666666" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="186.929050689067,29.1191315965261,201.8455859375,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de Unión de todo 1]"
-          TopLeft="838.120353982301,486.190735694822">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="94.379646017699,0"
-              Start="0,0"
-              End="86.879646017699,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="86.879646017699,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB3]"
-          TopLeft="427,567.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-81.8333333333333,28"
-              Start="0,0"
-              End="-81.8333333333333,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.7058823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.7058823529412"
-                    Point2="0,16.7058823529412"
-                    Point3="-4,16.7058823529412" />
-                  <mssgle:LineSegment
-                    End="-77.8333333333333,16.7058823529412" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77.8333333333333,16.7058823529412"
-                    Point2="-81.8333333333333,16.7058823529412"
-                    Point3="-81.8333333333333,20.7058823529412" />
-                  <mssgle:LineSegment
-                    End="-81.8333333333333,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB2]"
-          TopLeft="421.5,816.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-29.6666666666667,36"
-              Start="0,0"
-              End="-29.6666666666667,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-25.6666666666667,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-25.6666666666667,0"
-                    Point2="-29.6666666666667,0"
-                    Point3="-29.6666666666667,4" />
-                  <mssgle:LineSegment
-                    End="-29.6666666666667,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB1]"
-          TopLeft="158.25,50.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
-          TopLeft="287,282.388888888889">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-33.1666666666667,31.1111111111111"
-              Start="0,0"
-              End="-33.1666666666667,23.6111111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5493584708039" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5493584708039"
-                    Point2="0,18.5493584708039"
-                    Point3="-4,18.5493584708039" />
-                  <mssgle:LineSegment
-                    End="-29.1666666666667,18.5493584708039" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-29.1666666666667,18.5493584708039"
-                    Point2="-33.1666666666667,18.5493584708039"
-                    Point3="-33.1666666666667,22.5493584708039" />
-                  <mssgle:LineSegment
-                    End="-33.1666666666667,23.6111111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\Carga DW hechos control acceso\División condicional Estudiantes"
-          TopLeft="286.5,1039.5" />
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
-          TopLeft="354.5,977.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="9.33333333333331,62"
-              Start="0,0"
-              End="9.33333333333331,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.9407665505227" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.9407665505227"
-                    Point2="0,36.9407665505227"
-                    Point3="4,36.9407665505227" />
-                  <mssgle:LineSegment
-                    End="5.33333333333331,36.9407665505227" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.33333333333331,36.9407665505227"
-                    Point2="9.33333333333331,36.9407665505227"
-                    Point3="9.33333333333331,40.9407665505227" />
-                  <mssgle:LineSegment
-                    End="9.33333333333331,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida predeterminada de división condicional3]"
-          TopLeft="437.166666666667,1039.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="328.453687315634,-528.776666666667"
-              Start="0,0"
-              End="328.453687315634,-521.276666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-41.7215795586529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-41.7215795586529"
-                    Point2="0,-45.7215795586529"
-                    Point3="4,-45.7215795586529" />
-                  <mssgle:LineSegment
-                    End="324.453687315634,-45.7215795586529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="324.453687315634,-45.7215795586529"
-                    Point2="328.453687315634,-45.7215795586529"
-                    Point3="328.453687315634,-49.7215795586529" />
-                  <mssgle:LineSegment
-                    End="328.453687315634,-521.276666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="63.3040506890672,-40.7215795586529,201.8455859375,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Carga DW hechos control acceso\Personas y su departamento"
-          TopLeft="452.5,1094.5" />
-        <NodeLayout
-          Size="249,42"
-          Id="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio"
-          TopLeft="310.5,1173.5" />
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[SinRol2]"
-          TopLeft="397.666666666667,1081.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,92"
-              Start="0,0"
-              End="0,84.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,84.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-14.15279296875,37.37548828125,28.3055859375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB4]"
-          TopLeft="559,1136.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-83.8333333333334,37"
-              Start="0,0"
-              End="-83.8333333333334,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.0582601755786" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.0582601755786"
-                    Point2="0,22.0582601755786"
-                    Point3="-4,22.0582601755786" />
-                  <mssgle:LineSegment
-                    End="-79.8333333333334,22.0582601755786" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-79.8333333333334,22.0582601755786"
-                    Point2="-83.8333333333334,22.0582601755786"
-                    Point3="-83.8333333333334,26.0582601755786" />
-                  <mssgle:LineSegment
-                    End="-83.8333333333334,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="204,42"
-          Id="Package\Carga DW hechos control acceso\Si tiene departamento 105"
-          TopLeft="537.5,1271.15976821192" />
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de combinación de mezcla3]"
-          TopLeft="435,1215.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="171.833333333333,55.6597682119204"
-              Start="0,0"
-              End="171.833333333333,48.1597682119204">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.1359709588476" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.1359709588476"
-                    Point2="0,33.1359709588476"
-                    Point3="4,33.1359709588476" />
-                  <mssgle:LineSegment
-                    End="167.833333333333,33.1359709588476" />
-                  <mssgle:CubicBezierSegment
-                    Point1="167.833333333333,33.1359709588476"
-                    Point2="171.833333333333,33.1359709588476"
-                    Point3="171.833333333333,37.1359709588476" />
-                  <mssgle:LineSegment
-                    End="171.833333333333,48.1597682119204" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada4]"
-          TopLeft="672.166666666667,1271.15976821192">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.703687315634,-760.436434878587"
-              Start="0,0"
-              End="127.703687315634,-752.936434878587">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-89.1349824700519" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-89.1349824700519"
-                    Point2="0,-93.1349824700519"
-                    Point3="4,-93.1349824700519" />
-                  <mssgle:LineSegment
-                    End="123.703687315634,-93.1349824700519" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.703687315634,-93.1349824700519"
-                    Point2="127.703687315634,-93.1349824700519"
-                    Point3="127.703687315634,-97.1349824700519" />
-                  <mssgle:LineSegment
-                    End="127.703687315634,-752.936434878587" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -8540,6 +8569,14 @@ ORDER BY pin</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga DW hechos control acceso\Personas y su departamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -8560,14 +8597,6 @@ ORDER BY pin</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga DW hechos control acceso\Funcionarios no docentes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Carga DW hechos control acceso\DT_DOCENTE">
     <Properties>
       <Property>
@@ -8581,7 +8610,7 @@ ORDER BY pin</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Carga DW hechos control acceso\Personas y su departamento">
+    design-time-name="Package\Carga DW hechos control acceso\Funcionarios no docentes">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
