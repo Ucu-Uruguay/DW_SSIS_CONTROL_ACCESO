@@ -9,11 +9,11 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.132"
   DTS:LocaleID="3082"
-  DTS:ObjectName="DimPads"
+  DTS:ObjectName="DW_DimDocentesPads"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{02D598B5-B3E3-4E9E-8ACD-F988F6E676DD}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{8528C41A-43E9-409E-8D1D-4F819A4BE24F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -517,13 +517,13 @@ ORDER BY NRO_DOC</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="271,42"
-          Id="Package\Borrar DT_CA_Docs_PADS mes corriente"
-          TopLeft="90.25,5.5" />
-        <NodeLayout
           Size="308,42"
           Id="Package\Agregar datos DT_CA_Docs_PADS mes corriente"
           TopLeft="71.75,116.5" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\Borrar DT_CA_Docs_PADS mes corriente"
+          TopLeft="90.25,5.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="225.75,47.5">
