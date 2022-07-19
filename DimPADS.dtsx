@@ -12,8 +12,8 @@
   DTS:ObjectName="DW_DimDocentesPads"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{8528C41A-43E9-409E-8D1D-4F819A4BE24F}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{E90EB972-9A38-42B3-A924-744A946C2FAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -204,6 +204,12 @@
                       cachedName="mes"
                       externalMetadataColumnId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
                       lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].Columns[mes]" />
+                    <inputColumn
+                      refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].Columns[fecha]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -231,6 +237,10 @@
                       refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
                       dataType="i4"
                       name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      dataType="dbDate"
+                      name="fecha" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -284,8 +294,8 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct trim(NRO_DOCUMENTO) NRO_DOC, EMPLID, case when [TipoHora] like '%PAD%' then 'PAD' else 'AULA' end TipoHora, YEAR(GETDATE()) anio, MONTH(GETDATE()) mes 
-FROM DT_DOCENTE doc left outer join  (
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct trim(NRO_DOCUMENTO) NRO_DOC, EMPLID, case when [TipoHora] like '%PAD%' then 'PAD' else 'AULA' end TipoHora, YEAR(GETDATE()) anio, MONTH(GETDATE()) mes, CONVERT (Date, GETDATE()) fecha
+FROM DT_DOCENTE doc inner  join  (
 		SELECT distinct [EMPL_ID]
 			  ,[DOCUMENTO_ID]
 			  ,[FECHA_INICIO]
@@ -295,7 +305,7 @@ FROM DT_DOCENTE doc left outer join  (
 		  where  TipoHora&lt;&gt;'GESTION'
 		  and not exists (select 1 from FT_DESIGNACION_DS d2 where d2.DOCUMENTO_ID=d.DOCUMENTO_ID )
 		  UNION
-		  select emplid, DOCUMENTO_ID, FECHA_INICIO,coalesce(FECHA_FIN_DES, CURRENT_TIMESTAMP) FECHA_FIN_DES,TIPO_HORAS from FT_DESIGNACION_DS where TIPO_HORAS&lt;&gt;'GESTION'
+		  select emplid, DOCUMENTO_ID, FECHA_INICIO,coalesce(coalesce(FECHA_FIN_DES,FECHA_EGRESO), CURRENT_TIMESTAMP) FECHA_FIN,TIPO_HORAS from FT_DESIGNACION_DS where TIPO_HORAS&lt;&gt;'GESTION'
 	) designaciones on doc.EMPLID=designaciones.EMPL_ID and convert(date,GETDATE()) between  [FECHA_INICIO] and [FECHA_FIN]
 WHERE TipoHora = 'PAD'
 ORDER BY NRO_DOC</property>
@@ -383,6 +393,15 @@ ORDER BY NRO_DOC</property>
                       lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].Columns[mes]"
                       name="mes"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -410,6 +429,10 @@ ORDER BY NRO_DOC</property>
                       refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].ExternalColumns[mes]"
                       dataType="i4"
                       name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      dataType="dbDate"
+                      name="fecha" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -446,6 +469,11 @@ ORDER BY NRO_DOC</property>
                       dataType="i4"
                       lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de error de origen de OLE DB].Columns[mes]"
                       name="mes" />
+                    <outputColumn
+                      refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      dataType="dbDate"
+                      lineageId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      name="fecha" />
                     <outputColumn
                       refId="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
