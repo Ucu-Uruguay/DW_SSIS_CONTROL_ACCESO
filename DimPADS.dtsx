@@ -12,8 +12,8 @@
   DTS:ObjectName="DW_DimDocentesPads"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{E90EB972-9A38-42B3-A924-744A946C2FAE}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{D09F5B97-0151-4C54-B0E3-8FAE7E2EBCBF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -295,7 +295,7 @@
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct trim(NRO_DOCUMENTO) NRO_DOC, EMPLID, case when [TipoHora] like '%PAD%' then 'PAD' else 'AULA' end TipoHora, YEAR(GETDATE()) anio, MONTH(GETDATE()) mes, CONVERT (Date, GETDATE()) fecha
-FROM DT_DOCENTE doc inner  join  (
+FROM DT_DOCENTE doc left  join  (
 		SELECT distinct [EMPL_ID]
 			  ,[DOCUMENTO_ID]
 			  ,[FECHA_INICIO]
@@ -305,8 +305,14 @@ FROM DT_DOCENTE doc inner  join  (
 		  where  TipoHora&lt;&gt;'GESTION'
 		  and not exists (select 1 from FT_DESIGNACION_DS d2 where d2.DOCUMENTO_ID=d.DOCUMENTO_ID )
 		  UNION
-		  select emplid, DOCUMENTO_ID, FECHA_INICIO,coalesce(coalesce(FECHA_FIN_DES,FECHA_EGRESO), CURRENT_TIMESTAMP) FECHA_FIN,TIPO_HORAS from FT_DESIGNACION_DS where TIPO_HORAS&lt;&gt;'GESTION'
-	) designaciones on doc.EMPLID=designaciones.EMPL_ID and convert(date,GETDATE()) between  [FECHA_INICIO] and [FECHA_FIN]
+		  select    emplid, DOCUMENTO_ID, FECHA_INICIO, MinValue FECHA_FIN,TIPO_HORAS
+		  from FT_DESIGNACION_DS
+				CROSS APPLY (SELECT MIN(d) AS MinValue FROM (VALUES
+				(case when  YEAR(FECHA_FIN_DES)&lt;=1900 then CAST(CURRENT_TIMESTAMP AS datetime) else FECHA_FIN_DES end),
+				(case when  YEAR(FECHA_EGRESO)&lt;=1900 then CAST(CURRENT_TIMESTAMP AS datetime) else FECHA_EGRESO end),
+				(case when  YEAR(FECHA_CANCELACION)&lt;=1900 then CAST(CURRENT_TIMESTAMP AS datetime) else FECHA_CANCELACION end)) AS a(d)) F
+		  where TIPO_HORAS&lt;&gt;'GESTION'
+	) designaciones on doc.EMPLID=designaciones.EMPL_ID  and convert(date,GETDATE()) between  [FECHA_INICIO] and [FECHA_FIN]
 WHERE TipoHora = 'PAD'
 ORDER BY NRO_DOC</property>
                 <property
@@ -583,13 +589,13 @@ ORDER BY NRO_DOC</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202,42"
-          Id="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS"
-          TopLeft="49.25,91.5" />
-        <NodeLayout
           Size="173,42"
           Id="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Extrae los PADs hoy"
           TopLeft="63.75,5.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\Agregar datos DT_CA_Docs_PADS mes corriente\Carga DT_CA_Docs_PADS"
+          TopLeft="49.25,91.5" />
         <EdgeLayout
           Id="Package\Agregar datos DT_CA_Docs_PADS mes corriente.Paths[Salida de origen de OLE DB]"
           TopLeft="150.25,47.5">
