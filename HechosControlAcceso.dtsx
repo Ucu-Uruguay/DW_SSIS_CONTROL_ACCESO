@@ -12,8 +12,8 @@
   DTS:ObjectName="DW_HechosControlAcceso"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{95E91F48-1504-434E-B642-8FAB52DC9D58}">
+  DTS:VersionBuild="81"
+  DTS:VersionGUID="{4C60BB5E-852A-4DD1-B4B0-28B12590DAA0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,12 +48,12 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="90Qa/9VoHyI="
-            IV="sC3g5XxULMJ6k1/gRfBWdQ==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="J8KudX3ifD0="
+            IV="m5kLUL28nNGalm6TNrE5mw==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>sC3g5XxULMJ6k1/gRfBWdf4OBZKRw4lptbU4xmEPiUqQcnjtSlrxFRliBStMx3bj5iDR9uY7A5nJ1cBs1JhETjAJ9MsQGuMb1sGA34wdRi3lvNXNv63lujuVC72w/vmj4XqUK9Kf1De1Qkc3r5Hawvc21Dc32epRliZ3wtigV2TNXm+kQkY6xcG5epdsiAGb</CipherValue>
+              <CipherValue>m5kLUL28nNGalm6TNrE5m30nYxApETREa+hGCAImC3JqqxFZYY41Q8d+wEUFI5J9ss+RKqREYpbUYsaKgjAAmUD6Mw1JN7WYZ+qguQI+gepR1Tgqm0CFbtTDIM1H2m2v4/UUU/oEXFGF4d+AuNKfkMgt9chcNINcqmNdvjhSEkp7Tt3ddQ0o2osmWvu2giUz</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
@@ -86,12 +86,12 @@
       DTS:CreationName=""
       DTS:DTSID="{139B55F2-3D31-4564-A0FE-A19CE0BE05FB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT acct.create_time, acct.card_no, acct.pin, acct.dept_code, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit,&#xA;&#x9;acct.acc_zone_code, acct.area_name, acct.dev_id, acct.reader_name, acct.reader_state, acct.verify_mode_no, acct.event_no, acct.event_point_id&#xA; &#xA;FROM ODS_ZK_acc_transaction acct &#xA;&#x9;left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person ppv on vv.cert_number = ppv.pin&#xA;&#x9;left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt; '&quot; + (DT_WSTR,30)@[User::MaxFechaTransf] + &quot;'&quot;"
+      DTS:Expression="&quot;SELECT acct.create_time, acct.event_time, acct.card_no, acct.pin, acct.dept_code, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit,&#xA;&#x9;acct.acc_zone_code, acct.area_name, acct.dev_id, acct.reader_name, acct.reader_state, acct.verify_mode_no, acct.event_no, acct.event_point_id&#xA; &#xA;FROM ODS_ZK_acc_transaction acct &#xA;&#x9;left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person ppv on vv.cert_number = ppv.pin&#xA;&#x9;left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt; '&quot; + (DT_WSTR,30)@[User::MaxFechaTransf] + &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="QueryNuevosHechos">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT acct.create_time, acct.card_no, acct.pin, acct.dept_code, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit,
+        DTS:DataType="8">SELECT acct.create_time, acct.event_time, acct.card_no, acct.pin, acct.dept_code, vv.pin visitor_pin, vv.cert_number, pp.pin person_pin, ppv.pin person_as_visit,
 	acct.acc_zone_code, acct.area_name, acct.dev_id, acct.reader_name, acct.reader_state, acct.verify_mode_no, acct.event_no, acct.event_point_id
  
 FROM ODS_ZK_acc_transaction acct 
@@ -189,12 +189,6 @@ FROM ODS_ZK_acc_transaction acct
                       cachedName="cert_number"
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[cert_number]" />
                     <inputColumn
-                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[create_time]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="create_time"
-                      cachedScale="6"
-                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[create_time]" />
-                    <inputColumn
                       refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[reader_name]"
                       cachedDataType="wstr"
                       cachedLength="100"
@@ -223,6 +217,12 @@ FROM ODS_ZK_acc_transaction acct
                           name="FriendlyExpression">FINDSTRING(reader_name,"Buzone",1) &gt; 0 &amp;&amp; reader_state == 0 ? 1 : reader_state</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -339,13 +339,13 @@ FROM ODS_ZK_acc_transaction acct
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">(DT_DATE)#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[create_time]}</property>
+                          name="Expression">(DT_DATE)#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_DATE)create_time</property>
+                          name="FriendlyExpression">(DT_DATE)event_time</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -361,13 +361,13 @@ FROM ODS_ZK_acc_transaction acct
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">[DATEPART]("HH",#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[create_time]})</property>
+                          name="Expression">[DATEPART]("HH",#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("HH",create_time)</property>
+                          name="FriendlyExpression">DATEPART("HH",event_time)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -574,13 +574,6 @@ FROM ODS_ZK_acc_transaction acct
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].Columns[create_time]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="create_time"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].ExternalColumns[create_time]"
-                      lineageId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[create_time]" />
-                    <inputColumn
                       refId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].Columns[card_no]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -748,6 +741,13 @@ FROM ODS_ZK_acc_transaction acct
                       cachedName="ingr_egre"
                       externalMetadataColumnId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].ExternalColumns[ingr_egre]"
                       lineageId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB].ExternalColumns[create_time]"
+                      lineageId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1892,6 +1892,16 @@ ORDER BY NRO_DOC</property>
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_point_id]"
                       name="event_point_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].ExternalColumns[event_time]"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]"
+                      name="event_time"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1972,6 +1982,11 @@ ORDER BY NRO_DOC</property>
                       dataType="wstr"
                       length="255"
                       name="event_point_id" />
+                    <externalMetadataColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].ExternalColumns[event_time]"
+                      dataType="dbTimeStamp2"
+                      name="event_time"
+                      scale="6" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1984,6 +1999,12 @@ ORDER BY NRO_DOC</property>
                       dataType="dbTimeStamp2"
                       lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[create_time]"
                       name="create_time"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[event_time]"
+                      name="event_time"
                       scale="6" />
                     <outputColumn
                       refId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de error de origen de OLE DB].Columns[card_no]"
@@ -2397,6 +2418,12 @@ order by documento_nro</property>
                       cachedDataType="i4"
                       cachedName="ingr_egre"
                       lineageId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2794,6 +2821,20 @@ order by documento_nro</property>
                           name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada izquierda de combinación de mezcla].Columns[ingr_egre]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      name="event_time"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2982,6 +3023,12 @@ order by documento_nro</property>
                       cachedDataType="i4"
                       cachedName="ingr_egre"
                       lineageId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Outputs[Salida de combinación de mezcla].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Outputs[Salida de combinación de mezcla].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3387,6 +3434,20 @@ order by documento_nro</property>
                           name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada izquierda de combinación de mezcla].Columns[ingr_egre]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      name="event_time"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3581,6 +3642,12 @@ order by documento_nro</property>
                       cachedDataType="i4"
                       cachedName="ingr_egre"
                       lineageId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Outputs[Salida de combinación de mezcla].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Outputs[Salida de combinación de mezcla].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -3999,6 +4066,20 @@ order by documento_nro</property>
                           name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada izquierda de combinación de mezcla].Columns[ingr_egre]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      name="event_time"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4199,6 +4280,12 @@ order by documento_nro</property>
                       cachedDataType="i4"
                       cachedName="ingr_egre"
                       lineageId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Outputs[Salida de combinación de mezcla].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Outputs[Salida de combinación de mezcla].Columns[event_time]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4631,6 +4718,20 @@ order by documento_nro</property>
                           name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada izquierda de combinación de mezcla].Columns[ingr_egre]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Outputs[Salida de combinación de mezcla].Columns[event_time]"
+                      name="event_time"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada izquierda de combinación de mezcla].Columns[event_time]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -5060,6 +5161,23 @@ order by documento_nro</property>
                           name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Ordenar.Inputs[Entrada de ordenación].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5398,6 +5516,20 @@ order by documento_nro</property>
                           dataType="System.Int32"
                           description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
                           name="SortColumnId">#{Package\Carga DW hechos control acceso\Agrega columna ingr_egre.Outputs[Salida de columna derivada].Columns[ingr_egre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación].Columns[event_time]"
+                      name="event_time"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -6202,6 +6334,20 @@ ORDER BY pin</property>
                           name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[event_time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -6552,6 +6698,20 @@ ORDER BY pin</property>
                           dataType="System.Int32"
                           description="Id. de linaje de columna de salida"
                           name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 2].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Outputs[Salida de combinación de mezcla].Columns[event_time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -6920,6 +7080,20 @@ ORDER BY pin</property>
                           name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 4].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Outputs[Salida de combinación de mezcla].Columns[event_time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7284,6 +7458,20 @@ ORDER BY pin</property>
                           dataType="System.Int32"
                           description="Id. de linaje de columna de salida"
                           name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 5].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Outputs[Salida de combinación de mezcla].Columns[event_time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -7652,6 +7840,20 @@ ORDER BY pin</property>
                           name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]}</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Inputs[Entrada de Unión de todo 3].Columns[event_time]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="event_time"
+                      cachedScale="6"
+                      lineageId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Outputs[Salida de combinación de mezcla].Columns[event_time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Id. de linaje de columna de salida"
+                          name="OutputColumnLineageID">#{Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]}</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7817,6 +8019,12 @@ ORDER BY pin</property>
                       dataType="i4"
                       lineageId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[ingr_egre]"
                       name="ingr_egre" />
+                    <outputColumn
+                      refId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Carga DW hechos control acceso\Unión de todo.Outputs[Salida de Unión de todo 1].Columns[event_time]"
+                      name="event_time"
+                      scale="6" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -7886,9 +8094,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso\Ordenar.Outputs[Salida de ordenación]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB4]"
-              endId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso\Personas y su departamento.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB3]"
               endId="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada derecha de combinación de mezcla]"
@@ -7896,9 +8104,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso\Estudiantes activos.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB1]"
               endId="Package\Carga DW hechos control acceso\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
@@ -7906,9 +8114,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso\Extrae del ODS.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB2]"
-              endId="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso\Personas y su departamento.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso.Paths[Salida de Unión de todo 1]"
               endId="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB]"
@@ -8039,33 +8247,33 @@ ORDER BY pin</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="204,42"
-          Id="Package\Carga DW hechos control acceso\Si tiene departamento 105"
-          TopLeft="537.5,1271.15976821192" />
-        <NodeLayout
-          Size="228,42"
-          Id="Package\Carga DW hechos control acceso\División condicional Estudiantes"
-          TopLeft="286.5,1039.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Carga DW hechos control acceso\DT_DOCENTE"
-          TopLeft="214.5,240.388888888889" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Carga DW hechos control acceso\Unión de todo"
-          TopLeft="693.120353982301,468.723333333333" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Carga DW hechos control acceso\Funcionarios no docentes"
-          TopLeft="327.5,525.5" />
+          Size="249,42"
+          Id="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio"
+          TopLeft="310.5,1173.5" />
         <NodeLayout
           Size="284,42"
           Id="Package\Carga DW hechos control acceso\LOJ con funcionarios agrega EMPLID_FUNC"
           TopLeft="157.166666666667,595.5" />
         <NodeLayout
-          Size="249,42"
-          Id="Package\Carga DW hechos control acceso\LOJ para saber quienes son Servicio"
-          TopLeft="310.5,1173.5" />
+          Size="228,42"
+          Id="Package\Carga DW hechos control acceso\División condicional Estudiantes"
+          TopLeft="286.5,1039.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Carga DW hechos control acceso\Funcionarios no docentes"
+          TopLeft="327.5,525.5" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Carga DW hechos control acceso\Unión de todo"
+          TopLeft="693.120353982301,468.723333333333" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Carga DW hechos control acceso\Si EMPLID no es nulo ROL D"
+          TopLeft="104.5,394.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Carga DW hechos control acceso\Ordenar"
+          TopLeft="62.6111111111111,241.5" />
         <NodeLayout
           Size="198,42"
           Id="Package\Carga DW hechos control acceso\División FuncsAlumnsLYS"
@@ -8083,41 +8291,41 @@ ORDER BY pin</property>
           Id="Package\Carga DW hechos control acceso\Agrega columna ingr_egre"
           TopLeft="327.5,97.5" />
         <NodeLayout
+          Size="204,42"
+          Id="Package\Carga DW hechos control acceso\Si tiene departamento 105"
+          TopLeft="537.5,1271.15976821192" />
+        <NodeLayout
           Size="253,42"
           Id="Package\Carga DW hechos control acceso\LOJ con DT_Docente agrega EMPLID"
           TopLeft="86.5,313.5" />
-        <NodeLayout
-          Size="243,42"
-          Id="Package\Carga DW hechos control acceso\Si EMPLID_FUNC no es nulo ROL F"
-          TopLeft="177.666666666667,676.630718511493" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso"
-          TopLeft="932.5,461.658138056312" />
         <NodeLayout
           Size="164,42"
           Id="Package\Carga DW hechos control acceso\Columna derivada"
           TopLeft="272.5,935.5" />
         <NodeLayout
-          Size="213,42"
-          Id="Package\Carga DW hechos control acceso\Personas y su departamento"
-          TopLeft="452.5,1094.5" />
+          Size="199,42"
+          Id="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso"
+          TopLeft="932.5,461.658138056312" />
         <NodeLayout
-          Size="117,42"
-          Id="Package\Carga DW hechos control acceso\Ordenar"
-          TopLeft="62.6111111111111,241.5" />
+          Size="274,42"
+          Id="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST"
+          TopLeft="210.5,852.5" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Carga DW hechos control acceso\DT_DOCENTE"
+          TopLeft="214.5,240.388888888889" />
         <NodeLayout
           Size="233,42"
           Id="Package\Carga DW hechos control acceso\División condicional Funcionarios"
           TopLeft="170.666666666667,752.5" />
         <NodeLayout
           Size="213,42"
-          Id="Package\Carga DW hechos control acceso\Si EMPLID no es nulo ROL D"
-          TopLeft="104.5,394.5" />
+          Id="Package\Carga DW hechos control acceso\Personas y su departamento"
+          TopLeft="452.5,1094.5" />
         <NodeLayout
-          Size="274,42"
-          Id="Package\Carga DW hechos control acceso\LOJ don estudiantes agrega EMPLID_EST"
-          TopLeft="210.5,852.5" />
+          Size="243,42"
+          Id="Package\Carga DW hechos control acceso\Si EMPLID_FUNC no es nulo ROL F"
+          TopLeft="177.666666666667,676.630718511493" />
         <NodeLayout
           Size="235,42"
           Id="Package\Carga DW hechos control acceso\Agrea columna fuente del evento"
@@ -8126,6 +8334,142 @@ ORDER BY pin</property>
           Size="169,42"
           Id="Package\Carga DW hechos control acceso\Estudiantes activos"
           TopLeft="421.5,795.5" />
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
+          TopLeft="211.25,436.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.725490196078"
+              Start="0,0"
+              End="0,22.225490196078">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.225490196078" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
+          TopLeft="327.5,124.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.25,54.0000000000003"
+              Start="0,0"
+              End="-62.75,54.0000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-25.6467889908257,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.6467889908257,0"
+                    Point2="-29.6467889908257,0"
+                    Point3="-29.6467889908257,4" />
+                  <mssgle:LineSegment
+                    End="-29.6467889908257,50.0000000000003" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.6467889908257,50.0000000000003"
+                    Point2="-29.6467889908257,54.0000000000003"
+                    Point3="-33.6467889908257,54.0000000000003" />
+                  <mssgle:LineSegment
+                    End="-62.75,54.0000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
+          TopLeft="299.166666666667,718.630718511493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.5,33.869281488507"
+              Start="0,0"
+              End="-49.5,26.369281488507">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1829733678315" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1829733678315"
+                    Point2="0,20.1829733678315"
+                    Point3="-4,20.1829733678315" />
+                  <mssgle:LineSegment
+                    End="-45.5,20.1829733678315" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.5,20.1829733678315"
+                    Point2="-49.5,20.1829733678315"
+                    Point3="-49.5,24.1829733678315" />
+                  <mssgle:LineSegment
+                    End="-49.5,26.369281488507" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
+          TopLeft="275.75,110.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.75,0"
+              Start="0,0"
+              End="44.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga DW hechos control acceso.Paths[FuncsAlumnsLYS]"
+          TopLeft="123.847222222222,199.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.3333333333333"
+              Start="0,0"
+              End="0,34.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-37.53748046875,12.5421549479167,75.0749609375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[SinRol2]"
           TopLeft="397.666666666667,1081.5">
@@ -8378,30 +8722,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB4]"
-          TopLeft="559,1136.5">
+          TopLeft="427,567.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.8333333333334,37"
+              EndConnector="-81.8333333333333,28"
               Start="0,0"
-              End="-83.8333333333334,29.5">
+              End="-81.8333333333333,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.0582601755786" />
+                    End="0,12.7058823529412" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.0582601755786"
-                    Point2="0,22.0582601755786"
-                    Point3="-4,22.0582601755786" />
+                    Point1="0,12.7058823529412"
+                    Point2="0,16.7058823529412"
+                    Point3="-4,16.7058823529412" />
                   <mssgle:LineSegment
-                    End="-79.8333333333334,22.0582601755786" />
+                    End="-77.8333333333333,16.7058823529412" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79.8333333333334,22.0582601755786"
-                    Point2="-83.8333333333334,22.0582601755786"
-                    Point3="-83.8333333333334,26.0582601755786" />
+                    Point1="-77.8333333333333,16.7058823529412"
+                    Point2="-81.8333333333333,16.7058823529412"
+                    Point3="-81.8333333333333,20.7058823529412" />
                   <mssgle:LineSegment
-                    End="-83.8333333333334,29.5" />
+                    End="-81.8333333333333,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8440,30 +8784,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB2]"
-          TopLeft="287,282.388888888889">
+          TopLeft="559,1136.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-33.1666666666667,31.1111111111111"
+              EndConnector="-83.8333333333334,37"
               Start="0,0"
-              End="-33.1666666666667,23.6111111111111">
+              End="-83.8333333333334,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.5493584708039" />
+                    End="0,18.0582601755786" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.5493584708039"
-                    Point2="0,18.5493584708039"
-                    Point3="-4,18.5493584708039" />
+                    Point1="0,18.0582601755786"
+                    Point2="0,22.0582601755786"
+                    Point3="-4,22.0582601755786" />
                   <mssgle:LineSegment
-                    End="-29.1666666666667,18.5493584708039" />
+                    End="-79.8333333333334,22.0582601755786" />
                   <mssgle:CubicBezierSegment
-                    Point1="-29.1666666666667,18.5493584708039"
-                    Point2="-33.1666666666667,18.5493584708039"
-                    Point3="-33.1666666666667,22.5493584708039" />
+                    Point1="-79.8333333333334,22.0582601755786"
+                    Point2="-83.8333333333334,22.0582601755786"
+                    Point3="-83.8333333333334,26.0582601755786" />
                   <mssgle:LineSegment
-                    End="-33.1666666666667,23.6111111111111" />
+                    End="-83.8333333333334,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8496,30 +8840,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso.Paths[Salida de origen de OLE DB]"
-          TopLeft="427,567.5">
+          TopLeft="287,282.388888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81.8333333333333,28"
+              EndConnector="-33.1666666666667,31.1111111111111"
               Start="0,0"
-              End="-81.8333333333333,20.5">
+              End="-33.1666666666667,23.6111111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.7058823529412" />
+                    End="0,14.5493584708039" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.7058823529412"
-                    Point2="0,16.7058823529412"
-                    Point3="-4,16.7058823529412" />
+                    Point1="0,14.5493584708039"
+                    Point2="0,18.5493584708039"
+                    Point3="-4,18.5493584708039" />
                   <mssgle:LineSegment
-                    End="-77.8333333333333,16.7058823529412" />
+                    End="-29.1666666666667,18.5493584708039" />
                   <mssgle:CubicBezierSegment
-                    Point1="-77.8333333333333,16.7058823529412"
-                    Point2="-81.8333333333333,16.7058823529412"
-                    Point3="-81.8333333333333,20.7058823529412" />
+                    Point1="-29.1666666666667,18.5493584708039"
+                    Point2="-33.1666666666667,18.5493584708039"
+                    Point3="-33.1666666666667,22.5493584708039" />
                   <mssgle:LineSegment
-                    End="-81.8333333333333,20.5" />
+                    End="-33.1666666666667,23.6111111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8730,158 +9074,9 @@ ORDER BY pin</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada3]"
-          TopLeft="211.25,436.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.725490196078"
-              Start="0,0"
-              End="0,22.225490196078">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.225490196078" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada2]"
-          TopLeft="327.5,124.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-70.25,54.0000000000003"
-              Start="0,0"
-              End="-62.75,54.0000000000003">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-25.6467889908257,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-25.6467889908257,0"
-                    Point2="-29.6467889908257,0"
-                    Point3="-29.6467889908257,4" />
-                  <mssgle:LineSegment
-                    End="-29.6467889908257,50.0000000000003" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-29.6467889908257,50.0000000000003"
-                    Point2="-29.6467889908257,54.0000000000003"
-                    Point3="-33.6467889908257,54.0000000000003" />
-                  <mssgle:LineSegment
-                    End="-62.75,54.0000000000003" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada1]"
-          TopLeft="299.166666666667,718.630718511493">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-49.5,33.869281488507"
-              Start="0,0"
-              End="-49.5,26.369281488507">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.1829733678315" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.1829733678315"
-                    Point2="0,20.1829733678315"
-                    Point3="-4,20.1829733678315" />
-                  <mssgle:LineSegment
-                    End="-45.5,20.1829733678315" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-45.5,20.1829733678315"
-                    Point2="-49.5,20.1829733678315"
-                    Point3="-49.5,24.1829733678315" />
-                  <mssgle:LineSegment
-                    End="-49.5,26.369281488507" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[Salida de columna derivada]"
-          TopLeft="275.75,110.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="51.75,0"
-              Start="0,0"
-              End="44.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="44.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Carga DW hechos control acceso.Paths[FuncsAlumnsLYS]"
-          TopLeft="123.847222222222,199.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.3333333333333"
-              Start="0,0"
-              End="0,34.8333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.8333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-37.53748046875,12.5421549479167,75.0749609375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Carga DW hechos control acceso\DT_DOCENTE">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Carga DW hechos control acceso\Funcionarios no docentes">
     <Properties>
@@ -8900,6 +9095,19 @@ ORDER BY pin</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Carga DW hechos control acceso\Carga FT_Control_Acceso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga DW hechos control acceso\DT_DOCENTE">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
