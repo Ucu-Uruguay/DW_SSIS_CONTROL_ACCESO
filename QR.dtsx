@@ -1,0 +1,1719 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/15/2022 11:02:54 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PROD-UCUDBS10"
+  DTS:CreatorName="UCUADM\SSLVPN-RCALVO"
+  DTS:DTSID="{2BC1C0FA-B5CE-47C6-ADE5-BB63D8AE6128}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="QR"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{ACE17AA0-9D3D-4889-B67C-36FB79B6EBDA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F74C596A-4C91-4540-945C-6C06744267ED}"
+      DTS:ObjectName="PROD-UCUDBS10\POWERBI.DW_UCU">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;Initial Catalog=DW_UCU;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{75CB6418-A882-487D-A2CD-4D9844DEEADF}"
+      DTS:ObjectName="PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="CRIyEvJUVRE="
+            IV="5Hdf9+Ke7mLdAifTqOZ0Hg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+            <CipherData>
+              <CipherValue>5Hdf9+Ke7mLdAifTqOZ0HsGSXRCqYb1Gu3eokR7T+Xr4q6/0GPcK69c50gFUUPIfYhcFsiAOXKf0XQeceyAwIcGImoWbxU0xgs8R70MwfovZ/61K4VLDjrmZKibbttEBCy77a1svmg3QVBcc/mYuKNxb0PUNyuTPymYgXlSU7I+6dLZ4JG58/FUgiLCBQa0d</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ETL Eventos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{C81C7F8B-4EF6-474D-88E3-99B534AB25E4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL Eventos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL Eventos\Conversión de datos"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Conversión de datos"
+              name="Conversión de datos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos]"
+                  name="Entrada de conversión de datos">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[fuente_evento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="fuente_evento"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fuente_evento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de conversión de datos]"
+                  exclusionGroup="1"
+                  name="Salida de conversión de datos"
+                  synchronousInputId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de fuente_evento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de fuente_evento]"
+                      name="Copia de fuente_evento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fuente_evento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de error de conversión de datos]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de conversión de datos"
+                  synchronousInputId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL Eventos\Extrae Eventos"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Extrae Eventos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[ODS_QR_Eventos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Id_Mar]
+      ,[M_FechaHora]
+      ,[M_Operacion]
+	  ,case when M_Operacion=0 then 1
+		when M_Operacion =1 then -1
+		else 0 end ingr_egre
+	  ,CAST([M_FechaHora] as date) as fecha
+	  ,DATEPART(HOUR,[M_FechaHora]) as hora
+      ,[M_Id_Persona]
+      ,[M_Documento]
+      ,[M_Documento] as nro_documento
+      ,[M_Reader_Name]
+      ,[A_Nombre_Acceso]
+      ,[A_ID] as A_Id_auth_area
+	  ,M_Edificio+'-'+A_Nombre_acceso+'-'+'QR' as reader_name
+      ,[M_Edificio]
+      ,[M_IdMarca]
+	  ,'Q' as fuente_evento
+	  ,4 as verify_mode_no
+  FROM [ODS_UCU].[dbo].[ODS_QR_Eventos] E left outer join [ODS_UCU].[dbo].[ODS_QR_Accesos] A on A.[A_Id_Acceso]=E.M_Reader_Name</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL Eventos\Extrae Eventos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[Id_Mar]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[Id_Mar]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[Id_Mar]"
+                      name="Id_Mar"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_FechaHora]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_FechaHora]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_FechaHora]"
+                      name="M_FechaHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Operacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Operacion]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Operacion]"
+                      name="M_Operacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Id_Persona]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Id_Persona]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Id_Persona]"
+                      name="M_Id_Persona"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Documento]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Documento]"
+                      name="M_Documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Reader_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Reader_Name]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Reader_Name]"
+                      name="M_Reader_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Edificio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Edificio]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Edificio]"
+                      name="M_Edificio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_IdMarca]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_IdMarca]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_IdMarca]"
+                      name="M_IdMarca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[ingr_egre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[ingr_egre]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[ingr_egre]"
+                      name="ingr_egre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[hora]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[hora]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[hora]"
+                      name="hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[A_Nombre_Acceso]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[A_Nombre_Acceso]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[A_Nombre_Acceso]"
+                      name="A_Nombre_Acceso"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[A_Id_auth_area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[A_Id_auth_area]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[A_Id_auth_area]"
+                      name="A_Id_auth_area"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[reader_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[reader_name]"
+                      length="204"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[reader_name]"
+                      name="reader_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fuente_evento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[fuente_evento]"
+                      length="1"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fuente_evento]"
+                      name="fuente_evento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[verify_mode_no]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[verify_mode_no]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[verify_mode_no]"
+                      name="verify_mode_no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[nro_documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[nro_documento]"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[nro_documento]"
+                      name="nro_documento"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[Id_Mar]"
+                      dataType="guid"
+                      name="Id_Mar" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_FechaHora]"
+                      dataType="dbTimeStamp"
+                      name="M_FechaHora" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Operacion]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_Operacion" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Id_Persona]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_Id_Persona" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Documento]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_Documento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Reader_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_Reader_Name" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_Edificio]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_Edificio" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[M_IdMarca]"
+                      dataType="wstr"
+                      length="100"
+                      name="M_IdMarca" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[ingr_egre]"
+                      dataType="i4"
+                      name="ingr_egre" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      dataType="dbDate"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[hora]"
+                      dataType="i4"
+                      name="hora" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[A_Nombre_Acceso]"
+                      dataType="wstr"
+                      length="100"
+                      name="A_Nombre_Acceso" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[A_Id_auth_area]"
+                      dataType="wstr"
+                      length="100"
+                      name="A_Id_auth_area" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[reader_name]"
+                      dataType="wstr"
+                      length="204"
+                      name="reader_name" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[fuente_evento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="fuente_evento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[verify_mode_no]"
+                      dataType="i4"
+                      name="verify_mode_no" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].ExternalColumns[nro_documento]"
+                      dataType="wstr"
+                      length="100"
+                      name="nro_documento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[Id_Mar]"
+                      dataType="guid"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[Id_Mar]"
+                      name="Id_Mar" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_FechaHora]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_FechaHora]"
+                      name="M_FechaHora" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Operacion]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Operacion]"
+                      name="M_Operacion" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ingr_egre]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ingr_egre]"
+                      name="ingr_egre" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      dataType="dbDate"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[hora]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[hora]"
+                      name="hora" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Id_Persona]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Id_Persona]"
+                      name="M_Id_Persona" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Documento]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Documento]"
+                      name="M_Documento" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[nro_documento]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[nro_documento]"
+                      name="nro_documento" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Reader_Name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Reader_Name]"
+                      name="M_Reader_Name" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[A_Nombre_Acceso]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[A_Nombre_Acceso]"
+                      name="A_Nombre_Acceso" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[A_Id_auth_area]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[A_Id_auth_area]"
+                      name="A_Id_auth_area" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[reader_name]"
+                      dataType="wstr"
+                      length="204"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[reader_name]"
+                      name="reader_name" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Edificio]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_Edificio]"
+                      name="M_Edificio" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_IdMarca]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[M_IdMarca]"
+                      name="M_IdMarca" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[fuente_evento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[fuente_evento]"
+                      name="fuente_evento" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[verify_mode_no]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[verify_mode_no]"
+                      name="verify_mode_no" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="FT_CONTROL_ACCESO_QR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[FT_Control_Acceso_QR]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[ingr_egre]"
+                      cachedDataType="i4"
+                      cachedName="ingr_egre"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[ingr_egre]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[ingr_egre]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="dbDate"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[hora]"
+                      cachedDataType="i4"
+                      cachedName="hora"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[hora]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[hora]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[reader_name]"
+                      cachedDataType="wstr"
+                      cachedLength="204"
+                      cachedName="reader_name"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[reader_name]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[reader_name]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_FechaHora]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="M_FechaHora"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[create_time]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_FechaHora]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_Id_Persona]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="M_Id_Persona"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[visitor_pin]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Id_Persona]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_Documento]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="M_Documento"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[cert_number]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Documento]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_Edificio]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="M_Edificio"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[area_name]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Edificio]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_Reader_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="M_Reader_Name"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[dev_id]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Reader_Name]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[M_Operacion]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="M_Operacion"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[reader_state]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[M_Operacion]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[Copia de fuente_evento]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Copia de fuente_evento"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[fuente_evento]"
+                      lineageId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de fuente_evento]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[verify_mode_no]"
+                      cachedDataType="i4"
+                      cachedName="verify_mode_no"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[verify_mode_no]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[verify_mode_no]" />
+                    <inputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].Columns[nro_documento]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="nro_documento"
+                      externalMetadataColumnId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_documento]"
+                      lineageId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB].Columns[nro_documento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[create_time]"
+                      dataType="dbTimeStamp2"
+                      name="create_time"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[card_no]"
+                      dataType="wstr"
+                      length="50"
+                      name="card_no" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      name="pin" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[visitor_pin]"
+                      dataType="wstr"
+                      length="30"
+                      name="visitor_pin" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[cert_number]"
+                      dataType="wstr"
+                      length="30"
+                      name="cert_number" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[person_pin]"
+                      dataType="wstr"
+                      length="30"
+                      name="person_pin" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[person_as_visit]"
+                      dataType="wstr"
+                      length="30"
+                      name="person_as_visit" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[dept_code]"
+                      dataType="wstr"
+                      length="100"
+                      name="dept_code" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[acc_zone_code]"
+                      dataType="wstr"
+                      length="30"
+                      name="acc_zone_code" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[area_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="area_name" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[dev_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="dev_id" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[reader_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="reader_name" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[reader_state]"
+                      dataType="i2"
+                      name="reader_state" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[verify_mode_no]"
+                      dataType="i2"
+                      name="verify_mode_no" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[event_no]"
+                      dataType="i2"
+                      name="event_no" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[event_point_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="event_point_id" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[fuente_evento]"
+                      dataType="wstr"
+                      length="1"
+                      name="fuente_evento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[visita_persona]"
+                      dataType="bool"
+                      name="visita_persona" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[ROL_N1]"
+                      dataType="wstr"
+                      length="1"
+                      name="ROL_N1" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[nro_documento]"
+                      dataType="wstr"
+                      length="30"
+                      name="nro_documento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[EMPLID]"
+                      dataType="wstr"
+                      length="11"
+                      name="EMPLID" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[ROL_N2]"
+                      dataType="wstr"
+                      length="4"
+                      name="ROL_N2" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[EMPLID_FUNC]"
+                      dataType="wstr"
+                      length="11"
+                      name="EMPLID_FUNC" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      dataType="dbDate"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[hora]"
+                      dataType="i2"
+                      name="hora" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB].ExternalColumns[ingr_egre]"
+                      dataType="i2"
+                      name="ingr_egre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL Eventos.Paths[Salida de conversión de datos]"
+              endId="Package\ETL Eventos\FT_CONTROL_ACCESO_QR.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de conversión de datos"
+              startId="Package\ETL Eventos\Conversión de datos.Outputs[Salida de conversión de datos]" />
+            <path
+              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
+              endId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos]"
+              name="Salida de origen de OLE DB"
+              startId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ETL Mayores"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{5B99B85D-DACC-4BBF-8326-54E62983A43A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL Mayores"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL Mayores\DT_CA_QR_Persona"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="DT_CA_QR_Persona"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[DT_CA_QR_Persona]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL Mayores\DT_CA_QR_Persona.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[Id_Per]"
+                      cachedDataType="guid"
+                      cachedName="Id_Per"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[Id_Per]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[Id_Per]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Id_Persona]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Id_Persona"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Id_Persona]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Id_Persona]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Nombres]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Nombres"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Nombres]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Nombres]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Apellidos]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Apellidos"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Apellidos]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Apellidos]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Documento]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Documento"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Documento]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Documento]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Email"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Email]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Email]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Movile_Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="P_Movile_Phone"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Movile_Phone]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Movile_Phone]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Fecha_Desde]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="P_Fecha_Desde"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Fecha_Desde]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Desde]" />
+                    <inputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].Columns[P_Fecha_Hasta]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="P_Fecha_Hasta"
+                      externalMetadataColumnId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Fecha_Hasta]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Hasta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[Id_Per]"
+                      dataType="guid"
+                      name="Id_Per" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Id_Persona]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Id_Persona" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Nombres]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Nombres" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Apellidos]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Apellidos" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Documento]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Documento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Email" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Movile_Phone]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Movile_Phone" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Fecha_Desde]"
+                      dataType="dbTimeStamp"
+                      name="P_Fecha_Desde" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[P_Fecha_Hasta]"
+                      dataType="dbTimeStamp"
+                      name="P_Fecha_Hasta" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL Mayores\DT_CA_QR_Persona.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL Mayores\DT_CA_QR_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\DT_CA_QR_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL Mayores\DT_CA_QR_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL Mayores\Extrae Personas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Extrae Personas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[ODS_QR_Personas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL Mayores\Extrae Personas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[Id_Per]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[Id_Per]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[Id_Per]"
+                      name="Id_Per"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Id_Persona]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Id_Persona]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Id_Persona]"
+                      name="P_Id_Persona"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Nombres]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Nombres]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Nombres]"
+                      name="P_Nombres"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Apellidos]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Apellidos]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Apellidos]"
+                      name="P_Apellidos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Documento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Documento]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Documento]"
+                      name="P_Documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Email]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Email]"
+                      name="P_Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Movile_Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Movile_Phone]"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Movile_Phone]"
+                      name="P_Movile_Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Desde]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Fecha_Desde]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Desde]"
+                      name="P_Fecha_Desde"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Hasta]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Fecha_Hasta]"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].Columns[P_Fecha_Hasta]"
+                      name="P_Fecha_Hasta"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[Id_Per]"
+                      dataType="guid"
+                      name="Id_Per" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Id_Persona]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Id_Persona" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Nombres]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Nombres" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Apellidos]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Apellidos" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Documento]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Documento" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Email" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Movile_Phone]"
+                      dataType="wstr"
+                      length="100"
+                      name="P_Movile_Phone" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Fecha_Desde]"
+                      dataType="dbTimeStamp"
+                      name="P_Fecha_Desde" />
+                    <externalMetadataColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB].ExternalColumns[P_Fecha_Hasta]"
+                      dataType="dbTimeStamp"
+                      name="P_Fecha_Hasta" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[Id_Per]"
+                      dataType="guid"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[Id_Per]"
+                      name="Id_Per" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Id_Persona]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Id_Persona]"
+                      name="P_Id_Persona" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Nombres]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Nombres]"
+                      name="P_Nombres" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Apellidos]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Apellidos]"
+                      name="P_Apellidos" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Documento]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Documento]"
+                      name="P_Documento" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Email]"
+                      name="P_Email" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Movile_Phone]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Movile_Phone]"
+                      name="P_Movile_Phone" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Fecha_Desde]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Fecha_Desde]"
+                      name="P_Fecha_Desde" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Fecha_Hasta]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[P_Fecha_Hasta]"
+                      name="P_Fecha_Hasta" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL Mayores.Paths[Salida de origen de OLE DB]"
+              endId="Package\ETL Mayores\DT_CA_QR_Persona.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\ETL Mayores\Extrae Personas.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar tablas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{DE9DF873-DF0C-4858-9693-4E3D1EF231D3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar tablas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F74C596A-4C91-4540-945C-6C06744267ED}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DT_CA_QR_Persona&#xA;TRUNCATE TABLE FT_CONTROL_ACCESO_QR" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{209A67CC-2151-44C1-BF70-982CA6362454}"
+      DTS:From="Package\Limpiar tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\ETL Mayores" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{05DDBF4A-96BE-4B57-A47D-8BF7CF416F9E}"
+      DTS:From="Package\ETL Mayores"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\ETL Eventos" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\ETL Eventos"
+          TopLeft="110,200.5" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\ETL Mayores"
+          TopLeft="109,88.5" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Limpiar tablas"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="78,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.5,41"
+              Start="0,0"
+              End="100.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="96.5,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.5,20.5"
+                    Point2="100.5,20.5"
+                    Point3="100.5,24.5" />
+                  <mssgle:LineSegment
+                    End="100.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="178.5,130.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ETL Eventos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\ETL Eventos\FT_CONTROL_ACCESO_QR"
+          TopLeft="261.5,247.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\ETL Eventos\Extrae Eventos"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\ETL Eventos\Conversión de datos"
+          TopLeft="59.5,116.5" />
+        <EdgeLayout
+          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
+          TopLeft="80,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67,69"
+              Start="0,0"
+              End="67,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="63,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63,34.5"
+                    Point2="67,34.5"
+                    Point3="67,38.5" />
+                  <mssgle:LineSegment
+                    End="67,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ETL Eventos.Paths[Salida de conversión de datos]"
+          TopLeft="147,158.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="218.5,89"
+              Start="0,0"
+              End="218.5,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="4,44.5" />
+                  <mssgle:LineSegment
+                    End="214.5,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="214.5,44.5"
+                    Point2="218.5,44.5"
+                    Point3="218.5,48.5" />
+                  <mssgle:LineSegment
+                    End="218.5,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL Eventos\FT_CONTROL_ACCESO_QR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL Eventos\Extrae Eventos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ETL Mayores">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\ETL Mayores\Extrae Personas"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\ETL Mayores\DT_CA_QR_Persona"
+          TopLeft="249.5,5.5" />
+        <EdgeLayout
+          Id="Package\ETL Mayores.Paths[Salida de origen de OLE DB]"
+          TopLeft="159.5,26.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90,0"
+              Start="0,0"
+              End="82.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL Mayores\DT_CA_QR_Persona">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL Mayores\Extrae Personas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
