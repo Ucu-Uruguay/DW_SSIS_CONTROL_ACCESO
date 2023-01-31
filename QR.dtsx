@@ -12,11 +12,22 @@
   DTS:ObjectName="QR"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{0DF0614F-6897-4DEC-BEA5-635C8BCDB1A9}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{6ACCD7B9-52A7-420F-8447-583B1523A83B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CONTROL_ACCESO.log]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C068160D-43A4-43E5-ADA3-C759A03CBEEA}"
+      DTS:ObjectName="CONTROL_ACCESO.log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\ETL UCU\REGISTRO_ERRORES\CONTROL_ACCESO.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU]"
       DTS:CreationName="OLEDB"
@@ -47,19 +58,60 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="bSol0gEllGg="
-            IV="2RYezBooDXHH1rEH+8OFCg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="IDokZDcQFZ4="
+            IV="N80WjJPcPsZgdcZSHrtDhA==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>2RYezBooDXHH1rEH+8OFCrdDptt+mNiZZsJ3k3zGHHaNsai/Fcve0O4PC8CbeVVnbcoqHoA9fA1hPY++k59l2jq8SE9fDD3LNhyQB+l5Jw/w/BMqSdYXAEIqEikeNWntM+o6nN0ksrNFH+rccA4dmdnD19nRIt0V7G2lCCEw11sGjvzcadoSkeBwig/TpQgu</CipherValue>
+              <CipherValue>N80WjJPcPsZgdcZSHrtDhP01JzXV91oHwY7VLqT6SxRUO4oOxTonheliov1AbcmaYq0XCPvOYxI+ejgephBTk92rDmFgiQbGJWwVJxXGczhIFs3OvG3fOaPN2k4EaHn5PkXFg1KHUPtXMBBD0TbahRL7w5C57L1Hj215gzpJrr44DSx6XmfZyvp41l6wi1cE</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="CONTROL_ACCESO.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Escribe entradas del registro sobre eventos en un archivo CSV"
+      DTS:DTSID="{D2BF1FB8-285F-4149-AD4B-263A019AAA24}"
+      DTS:ObjectName="Proveedor de registro SSIS para archivos de texto">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{D2BF1FB8-285F-4149-AD4B-263A019AAA24}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\ETL Eventos"
@@ -71,6 +123,8 @@
       DTS:ObjectName="ETL Eventos"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -5647,22 +5701,22 @@ order by documento_nro</property>
               name="Salida de columna derivada"
               startId="Package\ETL Eventos\Si EMPLID no es nulo ROL D.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de columna derivada2]"
+              refId="Package\ETL Eventos.Paths[Salida de columna derivada1]"
               endId="Package\ETL Eventos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
               name="Salida de columna derivada"
               startId="Package\ETL Eventos\Columna derivada.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de columna derivada1]"
+              refId="Package\ETL Eventos.Paths[Salida de columna derivada2]"
               endId="Package\ETL Eventos\División funcionarios.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\ETL Eventos\Si EMPLID_FUNC no es nulo ROL F.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de combinación de mezcla1]"
+              refId="Package\ETL Eventos.Paths[Salida de combinación de mezcla]"
               endId="Package\ETL Eventos\Si EMPLID_FUNC no es nulo ROL F.Inputs[Entrada de columna derivada]"
               name="Salida de combinación de mezcla"
               startId="Package\ETL Eventos\Combinación funcionarios.Outputs[Salida de combinación de mezcla]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de combinación de mezcla]"
+              refId="Package\ETL Eventos.Paths[Salida de combinación de mezcla1]"
               endId="Package\ETL Eventos\Si EMPLID no es nulo ROL D.Inputs[Entrada de columna derivada]"
               name="Salida de combinación de mezcla"
               startId="Package\ETL Eventos\Combinación Docentes.Outputs[Salida de combinación de mezcla]" />
@@ -5682,12 +5736,12 @@ order by documento_nro</property>
               name="Salida de ordenación"
               startId="Package\ETL Eventos\Ordenar.Outputs[Salida de ordenación]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB3]"
+              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
               endId="Package\ETL Eventos\Combinación estudiantes.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\ETL Eventos\Estudiantes activos.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
+              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB1]"
               endId="Package\ETL Eventos\Conversión de datos.Inputs[Entrada de conversión de datos]"
               name="Salida de origen de OLE DB"
               startId="Package\ETL Eventos\Extrae Eventos.Outputs[Salida de origen de OLE DB]" />
@@ -5697,7 +5751,7 @@ order by documento_nro</property>
               name="Salida de origen de OLE DB"
               startId="Package\ETL Eventos\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB1]"
+              refId="Package\ETL Eventos.Paths[Salida de origen de OLE DB3]"
               endId="Package\ETL Eventos\Combinación Docentes.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\ETL Eventos\Cargar datos Docentes.Outputs[Salida de origen de OLE DB]" />
@@ -5730,6 +5784,8 @@ order by documento_nro</property>
       DTS:ObjectName="ETL Mayores"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -6716,6 +6772,8 @@ order by documento_nro</property>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{F74C596A-4C91-4540-945C-6C06744267ED}"
@@ -6894,7 +6952,7 @@ order by documento_nro</property>
           Id="Package\ETL Eventos\Unión de todo"
           TopLeft="985.732570239334,543.516348773842" />
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
+          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB1]"
           TopLeft="209,82">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6972,7 +7030,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB1]"
+          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB3]"
           TopLeft="597,192.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7006,7 +7064,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de combinación de mezcla]"
+          Id="Package\ETL Eventos.Paths[Salida de combinación de mezcla1]"
           TopLeft="437.5,286.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7120,7 +7178,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de combinación de mezcla1]"
+          Id="Package\ETL Eventos.Paths[Salida de combinación de mezcla]"
           TopLeft="586.602261553589,636.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7154,7 +7212,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de columna derivada1]"
+          Id="Package\ETL Eventos.Paths[Salida de columna derivada2]"
           TopLeft="573.5,732.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7224,7 +7282,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB3]"
+          Id="Package\ETL Eventos.Paths[Salida de origen de OLE DB]"
           TopLeft="863.5,841.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7352,7 +7410,7 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ETL Eventos.Paths[Salida de columna derivada2]"
+          Id="Package\ETL Eventos.Paths[Salida de columna derivada1]"
           TopLeft="1023,938.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
