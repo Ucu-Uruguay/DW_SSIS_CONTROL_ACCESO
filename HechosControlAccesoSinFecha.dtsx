@@ -12,8 +12,8 @@
   DTS:ObjectName="HechosControlAccesoSinFecha"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{344BC58C-B5A1-4D5C-8E85-88B32C04BCB1}">
+  DTS:VersionBuild="95"
+  DTS:VersionGUID="{60900B71-DF51-40A1-AFB0-E400547EF37E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,12 +48,12 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="r31CG0Tt6ek="
-            IV="ohoL2lp1Xf6TEqCDBCVR/Q==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="+ZWHr14v9yo="
+            IV="MlM55Z+9DccWwPQ4+xbAYw==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>ohoL2lp1Xf6TEqCDBCVR/QxzmkhhbwG5q1iQgsne1+1TDRLcZaL1W2tZYgDPYy7YQqtuE0JBP08SqcQNTbTS3hMebtFS1aFjY1zdM5d0x30euHuPxsGrQpQqdi9oBO9CAS8N32V4RcHIDYBFB7fAEg8NazVaWrXneSqqlCZyZfMURN6Sul30WlmgPKdVVMp9</CipherValue>
+              <CipherValue>MlM55Z+9DccWwPQ4+xbAY4GHdw1HpmmxCmOdE0gu+dS+d+SklQS1VjXcW22Ya37ECjbtSROHiuK4njRzR5KpKVW2YpUl8uNPgwC3ZGQgvxIlQg6ssWiJ/jeyha/P+BPFDyYdAXcppQ/km9+B2tq1FNu56AaWHnMy2Kx8YHp9nymXeF72VeW4NXKUsfVO6cOS</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
@@ -150,12 +150,6 @@
                       cachedLength="30"
                       cachedName="person_as_visit"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]" />
-                    <inputColumn
-                      refId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[dept_code]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="dept_code"
-                      lineageId="Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[dept_code]" />
                     <inputColumn
                       refId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Inputs[Entrada de columna derivada].Columns[cert_number]"
                       cachedDataType="wstr"
@@ -268,13 +262,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}) ? "V" : [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) ? "O" : (![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) || (![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; ![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}))) &amp;&amp; #{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[dept_code]} == "105" ? "S" : ""</property>
+                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}) ? "V" : [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) ? "O" : ""</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">!ISNULL(visitor_pin) &amp;&amp; ISNULL(person_as_visit) ? "V" : ISNULL(visitor_pin) &amp;&amp; ISNULL(person_pin) ? "O" : (!ISNULL(person_pin) || (!ISNULL(visitor_pin) &amp;&amp; !ISNULL(person_as_visit))) &amp;&amp; dept_code == "105" ? "S" : ""</property>
+                          name="FriendlyExpression">!ISNULL(visitor_pin) &amp;&amp; ISNULL(person_as_visit) ? "V" : ISNULL(visitor_pin) &amp;&amp; ISNULL(person_pin) ? "O" : ""</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -349,7 +343,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Cálculo"
                       errorRowDisposition="FailComponent"
-                      length="4"
+                      length="1"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[ROL_N2]"
                       name="ROL_N2"
                       truncationRowDisposition="FailComponent">
@@ -358,13 +352,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Expresión de columna derivada"
-                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}) ? "V" : [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) ? "O" : (![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) || (![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; ![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}))) &amp;&amp; #{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[dept_code]} == "105" ? "S" : "    "</property>
+                          name="Expression">![ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_as_visit]}) ? "V" : [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[visitor_pin]}) &amp;&amp; [ISNULL](#{Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB].Columns[person_pin]}) ? "O" : ""</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expresión descriptiva de columna derivada"
                           expressionType="Notify"
-                          name="FriendlyExpression">!ISNULL(visitor_pin) &amp;&amp; ISNULL(person_as_visit) ? "V" : ISNULL(visitor_pin) &amp;&amp; ISNULL(person_pin) ? "O" : (!ISNULL(person_pin) || (!ISNULL(visitor_pin) &amp;&amp; !ISNULL(person_as_visit))) &amp;&amp; dept_code == "105" ? "S" : "    "</property>
+                          name="FriendlyExpression">!ISNULL(visitor_pin) &amp;&amp; ISNULL(person_as_visit) ? "V" : ISNULL(visitor_pin) &amp;&amp; ISNULL(person_pin) ? "O" : ""</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1678,7 +1672,7 @@ ORDER BY NRO_DOC</property>
  
 FROM ODS_ZK_acc_transaction acct 
 	left outer join ODS_ZK_vis_visitor vv on acct.pin = vv.pin left outer join ODS_ZK_pers_person ppv on vv.cert_number = ppv.pin
-	left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt;= '01/01/2023' and acct.create_time &lt; '31/01/2023'</property>
+	left outer join ODS_ZK_pers_person pp on acct.pin = pp.pin  WHERE acct.create_time &gt;= '01/01/2023' and acct.create_time &lt; '07/02/2023'</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -2389,7 +2383,7 @@ order by documento_nro</property>
                     <inputColumn
                       refId="Package\Carga DW hechos control acceso con fecha manual\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada izquierda de combinación de mezcla].Columns[ROL_N2]"
                       cachedDataType="wstr"
-                      cachedLength="4"
+                      cachedLength="1"
                       cachedName="ROL_N2"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Ordenar.Outputs[Salida de ordenación].Columns[ROL_N2]" />
                     <inputColumn
@@ -5110,7 +5104,7 @@ order by documento_nro</property>
                     <inputColumn
                       refId="Package\Carga DW hechos control acceso con fecha manual\Ordenar.Inputs[Entrada de ordenación].Columns[ROL_N2]"
                       cachedDataType="wstr"
-                      cachedLength="4"
+                      cachedLength="1"
                       cachedName="ROL_N2"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[ROL_N2]">
                       <properties>
@@ -5473,7 +5467,7 @@ order by documento_nro</property>
                     <outputColumn
                       refId="Package\Carga DW hechos control acceso con fecha manual\Ordenar.Outputs[Salida de ordenación].Columns[ROL_N2]"
                       dataType="wstr"
-                      length="4"
+                      length="1"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Ordenar.Outputs[Salida de ordenación].Columns[ROL_N2]"
                       name="ROL_N2">
                       <properties>
@@ -6289,7 +6283,7 @@ ORDER BY pin</property>
                     <inputColumn
                       refId="Package\Carga DW hechos control acceso con fecha manual\Unión de todo.Inputs[Entrada de Unión de todo 1].Columns[ROL_N2]"
                       cachedDataType="wstr"
-                      cachedLength="4"
+                      cachedLength="1"
                       cachedName="ROL_N2"
                       lineageId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Outputs[Salida de columna derivada].Columns[ROL_N2]">
                       <properties>
@@ -8073,9 +8067,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso con fecha manual\Ordenar.Outputs[Salida de ordenación]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB4]"
-              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ para saber quienes son Servicio.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso con fecha manual\Personas y su departamento.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso con fecha manual\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB3]"
               endId="Package\Carga DW hechos control acceso con fecha manual\LOJ don estudiantes agrega EMPLID_EST.Inputs[Entrada derecha de combinación de mezcla]"
@@ -8083,9 +8077,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso con fecha manual\Estudiantes activos.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB]"
-              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ con funcionarios agrega EMPLID_FUNC.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso con fecha manual\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso con fecha manual\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB1]"
               endId="Package\Carga DW hechos control acceso con fecha manual\Agrea columna fuente del evento.Inputs[Entrada de columna derivada]"
@@ -8093,9 +8087,9 @@ ORDER BY pin</property>
               startId="Package\Carga DW hechos control acceso con fecha manual\Extrae del ODS.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB2]"
-              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ con DT_Docente agrega EMPLID.Inputs[Entrada derecha de combinación de mezcla]"
+              endId="Package\Carga DW hechos control acceso con fecha manual\LOJ para saber quienes son Servicio.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
-              startId="Package\Carga DW hechos control acceso con fecha manual\DT_DOCENTE.Outputs[Salida de origen de OLE DB]" />
+              startId="Package\Carga DW hechos control acceso con fecha manual\Personas y su departamento.Outputs[Salida de origen de OLE DB]" />
             <path
               refId="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de Unión de todo 1]"
               endId="Package\Carga DW hechos control acceso con fecha manual\Carga FT_Control_Acceso.Inputs[Entrada de destino de OLE DB]"
@@ -8648,30 +8642,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB4]"
-          TopLeft="559,1136.5">
+          TopLeft="427,567.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.8333333333334,37"
+              EndConnector="-81.8333333333333,28"
               Start="0,0"
-              End="-83.8333333333334,29.5">
+              End="-81.8333333333333,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.0582601755786" />
+                    End="0,12.7058823529412" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.0582601755786"
-                    Point2="0,22.0582601755786"
-                    Point3="-4,22.0582601755786" />
+                    Point1="0,12.7058823529412"
+                    Point2="0,16.7058823529412"
+                    Point3="-4,16.7058823529412" />
                   <mssgle:LineSegment
-                    End="-79.8333333333334,22.0582601755786" />
+                    End="-77.8333333333333,16.7058823529412" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79.8333333333334,22.0582601755786"
-                    Point2="-83.8333333333334,22.0582601755786"
-                    Point3="-83.8333333333334,26.0582601755786" />
+                    Point1="-77.8333333333333,16.7058823529412"
+                    Point2="-81.8333333333333,16.7058823529412"
+                    Point3="-81.8333333333333,20.7058823529412" />
                   <mssgle:LineSegment
-                    End="-83.8333333333334,29.5" />
+                    End="-81.8333333333333,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8710,30 +8704,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB2]"
-          TopLeft="287,282.388888888889">
+          TopLeft="559,1136.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-33.1666666666667,31.1111111111111"
+              EndConnector="-83.8333333333334,37"
               Start="0,0"
-              End="-33.1666666666667,23.6111111111111">
+              End="-83.8333333333334,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.5493584708039" />
+                    End="0,18.0582601755786" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.5493584708039"
-                    Point2="0,18.5493584708039"
-                    Point3="-4,18.5493584708039" />
+                    Point1="0,18.0582601755786"
+                    Point2="0,22.0582601755786"
+                    Point3="-4,22.0582601755786" />
                   <mssgle:LineSegment
-                    End="-29.1666666666667,18.5493584708039" />
+                    End="-79.8333333333334,22.0582601755786" />
                   <mssgle:CubicBezierSegment
-                    Point1="-29.1666666666667,18.5493584708039"
-                    Point2="-33.1666666666667,18.5493584708039"
-                    Point3="-33.1666666666667,22.5493584708039" />
+                    Point1="-79.8333333333334,22.0582601755786"
+                    Point2="-83.8333333333334,22.0582601755786"
+                    Point3="-83.8333333333334,26.0582601755786" />
                   <mssgle:LineSegment
-                    End="-33.1666666666667,23.6111111111111" />
+                    End="-83.8333333333334,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8766,30 +8760,30 @@ ORDER BY pin</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Carga DW hechos control acceso con fecha manual.Paths[Salida de origen de OLE DB]"
-          TopLeft="427,567.5">
+          TopLeft="287,282.388888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81.8333333333333,28"
+              EndConnector="-33.1666666666667,31.1111111111111"
               Start="0,0"
-              End="-81.8333333333333,20.5">
+              End="-33.1666666666667,23.6111111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.7058823529412" />
+                    End="0,14.5493584708039" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.7058823529412"
-                    Point2="0,16.7058823529412"
-                    Point3="-4,16.7058823529412" />
+                    Point1="0,14.5493584708039"
+                    Point2="0,18.5493584708039"
+                    Point3="-4,18.5493584708039" />
                   <mssgle:LineSegment
-                    End="-77.8333333333333,16.7058823529412" />
+                    End="-29.1666666666667,18.5493584708039" />
                   <mssgle:CubicBezierSegment
-                    Point1="-77.8333333333333,16.7058823529412"
-                    Point2="-81.8333333333333,16.7058823529412"
-                    Point3="-81.8333333333333,20.7058823529412" />
+                    Point1="-29.1666666666667,18.5493584708039"
+                    Point2="-33.1666666666667,18.5493584708039"
+                    Point3="-33.1666666666667,22.5493584708039" />
                   <mssgle:LineSegment
-                    End="-81.8333333333333,20.5" />
+                    End="-33.1666666666667,23.6111111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
