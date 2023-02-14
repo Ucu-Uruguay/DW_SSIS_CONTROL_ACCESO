@@ -12,8 +12,8 @@
   DTS:ObjectName="Test"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{1D400BAB-3367-4437-8FD9-B365527CC07B}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{9949465C-75F8-44C4-8463-62D77A089171}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,6 +38,16 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{31AE2CA3-F1A0-450C-BEE0-9C56DCBBCC88}"
+      DTS:ObjectName="PROD-UCUDBS10\POWERBI.DW_UCU 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;Initial Catalog=DW_UCU;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{75CB6418-A882-487D-A2CD-4D9844DEEADF}"
@@ -47,12 +57,33 @@
           DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
           <EncryptedData
             Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="8YvymfJhb5Y="
-            IV="+A4z+0mbs9NnzxQQBqjg6Q==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            Salt="G7g/j0mitdA="
+            IV="qcT9io/EBGf4DlXgExxnpg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
             <EncryptionMethod
               Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
             <CipherData>
-              <CipherValue>+A4z+0mbs9NnzxQQBqjg6aY2aS3epfegZ0kb/C/huhVbmGHBxiH8V2xrHV+ttvd5SxabVgWaEfiXDepsaN4kau+jme6/ecjFSCENP+nMYpvzdvaYanfija8h1TD29EJCFRLhzxZvuUBZmkRkWzk/V1w7wtYh/G2/fuqMLX9NuIbbHwq01GBKJF+IL3j41/T6</CipherValue>
+              <CipherValue>qcT9io/EBGf4DlXgExxnphnwnGLbFm3kEyIIjtoGDG5QLcrRK7v/zaA7ihLiTCwo9026OjGBg7N3xY69Di0ZZG3KvM4ZsfNJK7AP6N7FAXttPq4VuLCYJUoohGxvGL9+ZZqFUu9cA4V7MLA5ETrusxoHtNEBB8C2mprQTiIg8vz8+odWVr9RsgsSmLhKAnRK</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1042700D-447B-47F7-B4C2-392479A712D0}"
+      DTS:ObjectName="PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=PROD-UCUDBS10\POWERBI;User ID=rcalvo;Initial Catalog=ODS_UCU;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="9R9MhqWVTFI="
+            IV="uheoaGWwMtg0LQh+7J1omA==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+            <CipherData>
+              <CipherValue>uheoaGWwMtg0LQh+7J1omCfiHa/q9W5oN5Xit/ivufnh0qRY9170RkUW3o/QMJbQ2aiSESHPs8HyHgqT5LqsHS8RvEHUlg7GyN/oAWQdxy0WsaywKWUQCx+VHIQW6NYTm52Emzhn009dRNhYWG+6/I06vwiFPzudlwqO7SyvDzVdaG6yuVBdQt30q7ED3eQ9</CipherValue>
             </CipherData>
           </EncryptedData>
         </DTS:ConnectionManager>
@@ -5647,22 +5678,22 @@ order by documento_nro</property>
               name="Salida de columna derivada"
               startId="Package\Tarea Flujo de datos\Si EMPLID no es nulo ROL D.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
               endId="Package\Tarea Flujo de datos\Unión de todo.Inputs[Entrada de Unión de todo 3]"
               name="Salida de columna derivada"
               startId="Package\Tarea Flujo de datos\Columna derivada.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
               endId="Package\Tarea Flujo de datos\División funcionarios.Inputs[Entrada de división condicional]"
               name="Salida de columna derivada"
               startId="Package\Tarea Flujo de datos\Si EMPLID_FUNC no es nulo ROL F.Outputs[Salida de columna derivada]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla1]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla]"
               endId="Package\Tarea Flujo de datos\Si EMPLID_FUNC no es nulo ROL F.Inputs[Entrada de columna derivada]"
               name="Salida de combinación de mezcla"
               startId="Package\Tarea Flujo de datos\Combinación funcionarios.Outputs[Salida de combinación de mezcla]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla1]"
               endId="Package\Tarea Flujo de datos\Si EMPLID no es nulo ROL D.Inputs[Entrada de columna derivada]"
               name="Salida de combinación de mezcla"
               startId="Package\Tarea Flujo de datos\Combinación Docentes.Outputs[Salida de combinación de mezcla]" />
@@ -5682,12 +5713,12 @@ order by documento_nro</property>
               name="Salida de ordenación"
               startId="Package\Tarea Flujo de datos\Ordenar.Outputs[Salida de ordenación]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB3]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
               endId="Package\Tarea Flujo de datos\Combinación estudiantes.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\Tarea Flujo de datos\Estudiantes activos.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB1]"
               endId="Package\Tarea Flujo de datos\Conversión de datos.Inputs[Entrada de conversión de datos]"
               name="Salida de origen de OLE DB"
               startId="Package\Tarea Flujo de datos\Extrae Eventos.Outputs[Salida de origen de OLE DB]" />
@@ -5697,7 +5728,7 @@ order by documento_nro</property>
               name="Salida de origen de OLE DB"
               startId="Package\Tarea Flujo de datos\Funcionarios no docentes.Outputs[Salida de origen de OLE DB]" />
             <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB1]"
+              refId="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB3]"
               endId="Package\Tarea Flujo de datos\Combinación Docentes.Inputs[Entrada derecha de combinación de mezcla]"
               name="Salida de origen de OLE DB"
               startId="Package\Tarea Flujo de datos\Cargar datos Docentes.Outputs[Salida de origen de OLE DB]" />
@@ -5720,6 +5751,2122 @@ order by documento_nro</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Flujo de datos 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{6449EF1A-801B-4328-96AF-4E9021282288}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Flujo de datos 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Carga DT_CA_Persona"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[DT_CA_Persona]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.DW_UCU 2]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[fecha_alta]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_alta"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_alta]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_alta]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[fecha_ult_act]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_ult_act"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ult_act]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_ult_act]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[auth_dept_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="auth_dept_id"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[auth_dept_id]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[auth_dept_id]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[email]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[email]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="sexo"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sexo]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="apellido"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[mobile_phone]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="mobile_phone"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[mobile_phone]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[mobile_phone]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="pin"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[pin]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[pin]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[status]"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].Columns[Copia de FunApe2]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copia de FunApe2"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido2]"
+                      lineageId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de FunApe2]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      name="fecha_alta"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      name="fecha_ult_act"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[auth_dept_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="auth_dept_id" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[sexo]"
+                      dataType="wstr"
+                      length="1"
+                      name="sexo" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="50"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[mobile_phone]"
+                      dataType="wstr"
+                      length="20"
+                      name="mobile_phone" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      name="pin" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB].ExternalColumns[apellido2]"
+                      dataType="wstr"
+                      length="50"
+                      name="apellido2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Combinación de mezcla"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Combinación de mezcla;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Combina dos flujos de datos ordenados en uno solo mediante la combinación FULL, LEFT o INNER. Se recomienda esta transformación cuando se pueden ordenar los flujos de datos en sus orígenes."
+              name="Combinación de mezcla"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de combinación que se debe realizar."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número de columnas de la clave de ordenación."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores NULL se tratan como valores iguales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indica la cantidad máxima solicitada de búferes por entrada antes del bloqueo."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada izquierda de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[trim_pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="trim_pin"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[trim_pin]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[fecha_alta]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_alta"
+                      cachedScale="6"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_alta]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[fecha_ult_act]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_ult_act"
+                      cachedScale="6"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_ult_act]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[auth_dept_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="auth_dept_id"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[auth_dept_id]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="email"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[email]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="sexo"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[sexo]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="apellido"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[apellido]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[mobile_phone]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="mobile_phone"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[mobile_phone]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="pin"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[pin]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+                  hasSideEffects="true"
+                  name="Entrada derecha de combinación de mezcla">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[trim_DocNr]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="trim_DocNr"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[trim_DocNr]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunNom1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunNom1"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom1]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunNom2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunNom2"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom2]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunApe1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunApe1"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe1]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunApe2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunApe2"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla]"
+                  name="Salida de combinación de mezcla">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[id]"
+                      name="id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_alta]"
+                      name="fecha_alta"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[fecha_alta]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[fecha_ult_act]"
+                      name="fecha_ult_act"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[fecha_ult_act]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[auth_dept_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[auth_dept_id]"
+                      name="auth_dept_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[auth_dept_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[email]"
+                      name="email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sexo]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[sexo]"
+                      name="sexo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[sexo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[apellido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[mobile_phone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[mobile_phone]"
+                      name="mobile_phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[mobile_phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[pin]"
+                      name="pin">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[pin]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[status]"
+                      dataType="i2"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[status]"
+                      name="status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla].Columns[status]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunNom1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunNom1]"
+                      name="FunNom1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunNom1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunNom2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunNom2]"
+                      name="FunNom2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunNom2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe1]"
+                      name="FunApe1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunApe1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe2]"
+                      name="FunApe2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="La columna de entrada asociada a esta columna de salida"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla].Columns[FunApe2]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Conversión de datos"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversión de datos;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Conversión de datos"
+              name="Conversión de datos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Conversión de datos.Inputs[Entrada de conversión de datos]"
+                  name="Entrada de conversión de datos">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Conversión de datos.Inputs[Entrada de conversión de datos].Columns[FunApe2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunApe2"
+                      lineageId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de conversión de datos]"
+                  exclusionGroup="1"
+                  name="Salida de conversión de datos"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de FunApe2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de conversión de datos].Columns[Copia de FunApe2]"
+                      name="Copia de FunApe2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica la columna de entrada usada como origen de datos para la conversión."
+                          name="SourceInputColumnLineageID">#{Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla].Columns[FunApe2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de error de conversión de datos]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de conversión de datos"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\Conversión de datos.Inputs[Entrada de conversión de datos]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de error de conversión de datos].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Extrae funcionarios Saico"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[ODS_SAICO_FUNCIONA]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [FunNom1]
+      ,[FunNom2]
+      ,[FunApe1]
+      ,[FunApe2]
+      ,[FunDocumNr]
+ FROM ODS_SAICO_FUNCIONA
+ORDER BY FunDocumNr DESC</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunNom1]"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom1]"
+                      name="FunNom1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunNom2]"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom2]"
+                      name="FunNom2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunApe1]"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe1]"
+                      name="FunApe1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunApe2]"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe2]"
+                      name="FunApe2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunDocumNr]"
+                      length="15"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]"
+                      name="FunDocumNr"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunNom1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FunNom1" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunNom2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FunNom2" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunApe1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FunApe1" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunApe2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="FunApe2" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].ExternalColumns[FunDocumNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="FunDocumNr" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunNom1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunNom1]"
+                      name="FunNom1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunNom2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunNom2]"
+                      name="FunNom2" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunApe1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunApe1]"
+                      name="FunApe1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunApe2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunApe2]"
+                      name="FunApe2" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunDocumNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[FunDocumNr]"
+                      name="FunDocumNr" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Extrae ODS_ZK_per_person"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [id]
+      ,[create_time] fecha_alta
+      ,[update_time] fecha_ult_act
+      ,[auth_dept_id]
+      ,[email]
+      ,[gender] sexo
+      ,[name] nombre
+      ,[last_name] apellido
+      ,[mobile_phone]
+      ,[pin]
+      ,[status]
+  FROM [ODS_UCU].[dbo].[ODS_ZK_pers_person]
+order by pin desc</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[PROD-UCUDBS10\POWERBI.ODS_UCU.rcalvo 1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB]"
+                  isSorted="true"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_alta]"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_alta]"
+                      name="fecha_alta"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_ult_act]"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_ult_act]"
+                      name="fecha_ult_act"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[auth_dept_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[auth_dept_id]"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[auth_dept_id]"
+                      name="auth_dept_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[email]"
+                      length="100"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[sexo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[sexo]"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[sexo]"
+                      name="sexo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[apellido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[apellido]"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[apellido]"
+                      name="apellido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[mobile_phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[mobile_phone]"
+                      length="20"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[mobile_phone]"
+                      name="mobile_phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[pin]"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]"
+                      name="pin"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[status]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[status]"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="50"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      name="fecha_alta"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      name="fecha_ult_act"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[auth_dept_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="auth_dept_id" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[sexo]"
+                      dataType="wstr"
+                      length="1"
+                      name="sexo" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[apellido]"
+                      dataType="wstr"
+                      length="50"
+                      name="apellido" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[mobile_phone]"
+                      dataType="wstr"
+                      length="20"
+                      name="mobile_phone" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      name="pin" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[fecha_alta]"
+                      name="fecha_alta"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[fecha_ult_act]"
+                      name="fecha_ult_act"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[auth_dept_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[auth_dept_id]"
+                      name="auth_dept_id" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[sexo]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[sexo]"
+                      name="sexo" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[apellido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[apellido]"
+                      name="apellido" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[mobile_phone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[mobile_phone]"
+                      name="mobile_phone" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[pin]"
+                      name="pin" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[status]"
+                      dataType="i2"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Ordenar"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="id"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[fecha_alta]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_alta"
+                      cachedScale="6"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_alta]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[fecha_ult_act]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="fecha_ult_act"
+                      cachedScale="6"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_ult_act]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[auth_dept_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="auth_dept_id"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[auth_dept_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="email"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[sexo]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="sexo"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[sexo]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[nombre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[apellido]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="apellido"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[apellido]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[mobile_phone]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="mobile_phone"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[mobile_phone]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="pin"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación].Columns[trim_pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="trim_pin"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada].Columns[trim_pin]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[id]"
+                      name="id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_alta]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_alta]"
+                      name="fecha_alta"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_alta]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_ult_act]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[fecha_ult_act]"
+                      name="fecha_ult_act"
+                      scale="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[fecha_ult_act]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[auth_dept_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[auth_dept_id]"
+                      name="auth_dept_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[auth_dept_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[email]"
+                      name="email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[sexo]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[sexo]"
+                      name="sexo">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[sexo]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[nombre]"
+                      name="nombre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[nombre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[apellido]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[apellido]"
+                      name="apellido">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[apellido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[mobile_phone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[mobile_phone]"
+                      name="mobile_phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[mobile_phone]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[pin]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[pin]"
+                      name="pin">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[status]"
+                      dataType="i2"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[status]"
+                      name="status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[status]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[trim_pin]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación].Columns[trim_pin]"
+                      name="trim_pin"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada].Columns[trim_pin]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\Ordenar 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Ordenar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Ordena los datos de entrada de manera ascendente o descendente cuando no es posible ordenarlos en su origen. Por ejemplo, se ordenan los datos de ventas por 'id. de cliente' antes de que se escriban en un archivo plano y se entreguen a otro departamento. Nota: no se recomienda realizar esta transformación para grandes flujos de datos."
+              name="Ordenar 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si la transformación Ordenar quita filas con valores de ordenación duplicados."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el número máximo de subprocesos que se deben usar para la ordenación."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación]"
+                  name="Entrada de ordenación">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[FunNom1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunNom1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom1]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[FunNom2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunNom2"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom2]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[FunApe1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunApe1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe1]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[FunApe2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="FunApe2"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe2]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[FunDocumNr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="FunDocumNr"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación].Columns[trim_DocNr]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="trim_DocNr"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada].Columns[trim_DocNr]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica las opciones de comparación para datos de caracteres."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el criterio de ordenación de la columna."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación]"
+                  isSorted="true"
+                  name="Salida de ordenación">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom1]"
+                      name="FunNom1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunNom2]"
+                      name="FunNom2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunNom2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe1]"
+                      name="FunApe1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunApe2]"
+                      name="FunApe2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunApe2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunDocumNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[FunDocumNr]"
+                      name="FunDocumNr">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[trim_DocNr]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación].Columns[trim_DocNr]"
+                      name="trim_DocNr"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Especifica el identificador de linaje de la columna de entrada que está asociada a esta columna de salida."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada].Columns[trim_DocNr]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\TRIM(docNr)"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="TRIM(docNr)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Inputs[Entrada de columna derivada].Columns[FunDocumNr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="FunDocumNr"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\TRIM(docNr).Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada].Columns[trim_DocNr]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada].Columns[trim_DocNr]"
+                      name="trim_DocNr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB].Columns[FunDocumNr]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(FunDocumNr)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\TRIM(docNr).Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos 1\TRIM(pin)"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="TRIM(pin)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos 1\TRIM(pin).Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(pin).Inputs[Entrada de columna derivada].Columns[pin]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="pin"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\TRIM(pin).Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada].Columns[trim_pin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada].Columns[trim_pin]"
+                      name="trim_pin"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB].Columns[pin]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(pin)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos 1\TRIM(pin).Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de columna derivada]"
+              endId="Package\Tarea Flujo de datos 1\Ordenar.Inputs[Entrada de ordenación]"
+              name="Salida de columna derivada"
+              startId="Package\Tarea Flujo de datos 1\TRIM(pin).Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de columna derivada1]"
+              endId="Package\Tarea Flujo de datos 1\Ordenar 1.Inputs[Entrada de ordenación]"
+              name="Salida de columna derivada"
+              startId="Package\Tarea Flujo de datos 1\TRIM(docNr).Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de combinación de mezcla]"
+              endId="Package\Tarea Flujo de datos 1\Conversión de datos.Inputs[Entrada de conversión de datos]"
+              name="Salida de combinación de mezcla"
+              startId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Outputs[Salida de combinación de mezcla]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de conversión de datos]"
+              endId="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de conversión de datos"
+              startId="Package\Tarea Flujo de datos 1\Conversión de datos.Outputs[Salida de conversión de datos]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de ordenación]"
+              endId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada izquierda de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Tarea Flujo de datos 1\Ordenar.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de ordenación1]"
+              endId="Package\Tarea Flujo de datos 1\Combinación de mezcla.Inputs[Entrada derecha de combinación de mezcla]"
+              name="Salida de ordenación"
+              startId="Package\Tarea Flujo de datos 1\Ordenar 1.Outputs[Salida de ordenación]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de origen de OLE DB]"
+              endId="Package\Tarea Flujo de datos 1\TRIM(pin).Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person.Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\Tarea Flujo de datos 1.Paths[Salida de origen de OLE DB1]"
+              endId="Package\Tarea Flujo de datos 1\TRIM(docNr).Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -5737,6 +7884,10 @@ order by documento_nro</property>
           Size="176,42"
           Id="Package\Tarea Flujo de datos"
           TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Tarea Flujo de datos 1"
+          TopLeft="15.5,131.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5746,355 +7897,69 @@ order by documento_nro</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="149,42"
-          Id="Package\Tarea Flujo de datos\Extrae Eventos"
-          TopLeft="91.5,13" />
-        <NodeLayout
           Size="175,42"
           Id="Package\Tarea Flujo de datos\Conversión de datos"
           TopLeft="295.5,15" />
         <NodeLayout
+          Size="213,42"
+          Id="Package\Tarea Flujo de datos\Si EMPLID no es nulo ROL D"
+          TopLeft="364,283" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Tarea Flujo de datos\Columna derivada"
+          TopLeft="972.5,891.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Tarea Flujo de datos\División funcionarios"
+          TopLeft="620.602261553589,748.5" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Tarea Flujo de datos\Combinación funcionarios"
+          TopLeft="518.602261553589,547.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Tarea Flujo de datos\Extrae Eventos"
+          TopLeft="91.5,13" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Tarea Flujo de datos\Unión de todo"
+          TopLeft="1017.23257023933,496.516348773842" />
+        <NodeLayout
           Size="208,42"
           Id="Package\Tarea Flujo de datos\FT_CONTROL_ACCESO_QR"
           TopLeft="1192,490" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
-          TopLeft="240.5,35">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="55,0"
-              Start="0,0"
-              End="47.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="47.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="117,42"
-          Id="Package\Tarea Flujo de datos\Ordenar"
-          TopLeft="329.5,99.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
-          TopLeft="385.5,57">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.5"
-              Start="0,0"
-              End="0,35">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Tarea Flujo de datos\Cargar datos Docentes"
-          TopLeft="535.5,103.5" />
         <NodeLayout
           Size="186,42"
           Id="Package\Tarea Flujo de datos\Combinación Docentes"
           TopLeft="374.5,197.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de ordenación]"
-          TopLeft="388,141.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="49.8333333333333,56"
-              Start="0,0"
-              End="49.8333333333333,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.3134328358209" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.3134328358209"
-                    Point2="0,33.3134328358209"
-                    Point3="4,33.3134328358209" />
-                  <mssgle:LineSegment
-                    End="45.8333333333333,33.3134328358209" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45.8333333333333,33.3134328358209"
-                    Point2="49.8333333333333,33.3134328358209"
-                    Point3="49.8333333333333,37.3134328358209" />
-                  <mssgle:LineSegment
-                    End="49.8333333333333,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB1]"
-          TopLeft="628.5,145.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-131.333333333333,52"
-              Start="0,0"
-              End="-131.333333333333,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.9339019189765" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.9339019189765"
-                    Point2="0,30.9339019189765"
-                    Point3="-4,30.9339019189765" />
-                  <mssgle:LineSegment
-                    End="-127.333333333333,30.9339019189765" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-127.333333333333,30.9339019189765"
-                    Point2="-131.333333333333,30.9339019189765"
-                    Point3="-131.333333333333,34.9339019189765" />
-                  <mssgle:LineSegment
-                    End="-131.333333333333,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="213,42"
-          Id="Package\Tarea Flujo de datos\Si EMPLID no es nulo ROL D"
-          TopLeft="364,283" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla]"
-          TopLeft="469,239.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.5"
-              Start="0,0"
-              End="0,36">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="117,42"
+          Id="Package\Tarea Flujo de datos\Ordenar"
+          TopLeft="329.5,99.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\Tarea Flujo de datos\División docentes"
           TopLeft="386.602261553589,362.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
-          TopLeft="468.801130776795,325">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.5"
-              Start="0,0"
-              End="0,30">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Tarea Flujo de datos\Combinación estudiantes"
+          TopLeft="698,896.5" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Tarea Flujo de datos\Si EMPLID_FUNC no es nulo ROL F"
+          TopLeft="483.5,643.5" />
         <NodeLayout
           Size="199,42"
           Id="Package\Tarea Flujo de datos\Funcionarios no docentes"
           TopLeft="625.5,472.5" />
         <NodeLayout
-          Size="199,42"
-          Id="Package\Tarea Flujo de datos\Combinación funcionarios"
-          TopLeft="518.602261553589,547.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida predeterminada de división condicional]"
-          TopLeft="441.602261553589,404.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="144.666666666667,143"
-              Start="0,0"
-              End="144.666666666667,135.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.6658780793065" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,67.6658780793065"
-                    Point2="0,71.6658780793065"
-                    Point3="4,71.6658780793065" />
-                  <mssgle:LineSegment
-                    End="140.666666666667,71.6658780793065" />
-                  <mssgle:CubicBezierSegment
-                    Point1="140.666666666667,71.6658780793065"
-                    Point2="144.666666666667,71.6658780793065"
-                    Point3="144.666666666667,75.6658780793065" />
-                  <mssgle:LineSegment
-                    End="144.666666666667,135.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.5894596354167,76.6658780793065,201.8455859375,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB2]"
-          TopLeft="725,514.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-75.0644051130774,33"
-              Start="0,0"
-              End="-75.0644051130774,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.642073778664" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.642073778664"
-                    Point2="0,19.642073778664"
-                    Point3="-4,19.642073778664" />
-                  <mssgle:LineSegment
-                    End="-71.0644051130774,19.642073778664" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-71.0644051130774,19.642073778664"
-                    Point2="-75.0644051130774,19.642073778664"
-                    Point3="-75.0644051130774,23.642073778664" />
-                  <mssgle:LineSegment
-                    End="-75.0644051130774,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="243,42"
-          Id="Package\Tarea Flujo de datos\Si EMPLID_FUNC no es nulo ROL F"
-          TopLeft="483.5,643.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla1]"
-          TopLeft="618.102261553589,589.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-13.1022615535892,54"
-              Start="0,0"
-              End="-13.1022615535892,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23"
-                    Point2="0,27"
-                    Point3="-4,27" />
-                  <mssgle:LineSegment
-                    End="-9.10226155358919,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9.10226155358919,27"
-                    Point2="-13.1022615535892,27"
-                    Point3="-13.1022615535892,31" />
-                  <mssgle:LineSegment
-                    End="-13.1022615535892,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Tarea Flujo de datos\División funcionarios"
-          TopLeft="620.602261553589,748.5" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
-          TopLeft="605,685.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="75.6022615535892,63"
-              Start="0,0"
-              End="75.6022615535892,55.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.4594594594595" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.4594594594595"
-                    Point2="0,37.4594594594595"
-                    Point3="4,37.4594594594595" />
-                  <mssgle:LineSegment
-                    End="71.6022615535892,37.4594594594595" />
-                  <mssgle:CubicBezierSegment
-                    Point1="71.6022615535892,37.4594594594595"
-                    Point2="75.6022615535892,37.4594594594595"
-                    Point3="75.6022615535892,41.4594594594595" />
-                  <mssgle:LineSegment
-                    End="75.6022615535892,55.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="186,42"
+          Id="Package\Tarea Flujo de datos\Cargar datos Docentes"
+          TopLeft="535.5,103.5" />
         <NodeLayout
           Size="169,42"
           Id="Package\Tarea Flujo de datos\Estudiantes activos"
           TopLeft="810.5,752.5" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Tarea Flujo de datos\Combinación estudiantes"
-          TopLeft="698,896.5" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida predeterminada de división condicional1]"
           TopLeft="708.602261553589,790.5">
@@ -6132,7 +7997,155 @@ order by documento_nro</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida predeterminada de división condicional]"
+          TopLeft="441.602261553589,404.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="144.666666666667,143"
+              Start="0,0"
+              End="144.666666666667,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.6658780793065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.6658780793065"
+                    Point2="0,71.6658780793065"
+                    Point3="4,71.6658780793065" />
+                  <mssgle:LineSegment
+                    End="140.666666666667,71.6658780793065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="140.666666666667,71.6658780793065"
+                    Point2="144.666666666667,71.6658780793065"
+                    Point3="144.666666666667,75.6658780793065" />
+                  <mssgle:LineSegment
+                    End="144.666666666667,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.5894596354165,76.6658780793065,201.8455859375,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
+          TopLeft="1162.23257023933,514.258174386921">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.7674297606659,0"
+              Start="0,0"
+              End="22.2674297606659,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.2674297606659,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB3]"
+          TopLeft="628.5,145.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-131.333333333333,52"
+              Start="0,0"
+              End="-131.333333333333,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.9339019189765" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.9339019189765"
+                    Point2="0,30.9339019189765"
+                    Point3="-4,30.9339019189765" />
+                  <mssgle:LineSegment
+                    End="-127.333333333333,30.9339019189765" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-127.333333333333,30.9339019189765"
+                    Point2="-131.333333333333,30.9339019189765"
+                    Point3="-131.333333333333,34.9339019189765" />
+                  <mssgle:LineSegment
+                    End="-131.333333333333,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB2]"
+          TopLeft="725,514.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.0644051130774,33"
+              Start="0,0"
+              End="-75.0644051130774,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.642073778664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.642073778664"
+                    Point2="0,19.642073778664"
+                    Point3="-4,19.642073778664" />
+                  <mssgle:LineSegment
+                    End="-71.0644051130774,19.642073778664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.0644051130774,19.642073778664"
+                    Point2="-75.0644051130774,19.642073778664"
+                    Point3="-75.0644051130774,23.642073778664" />
+                  <mssgle:LineSegment
+                    End="-75.0644051130774,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB1]"
+          TopLeft="240.5,35">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55,0"
+              Start="0,0"
+              End="47.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de origen de OLE DB]"
           TopLeft="895,794.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -6165,10 +8178,62 @@ order by documento_nro</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Tarea Flujo de datos\Columna derivada"
-          TopLeft="972.5,891.5" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de ordenación]"
+          TopLeft="388,141.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.8333333333333,56"
+              Start="0,0"
+              End="49.8333333333333,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3134328358209" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3134328358209"
+                    Point2="0,33.3134328358209"
+                    Point3="4,33.3134328358209" />
+                  <mssgle:LineSegment
+                    End="45.8333333333333,33.3134328358209" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.8333333333333,33.3134328358209"
+                    Point2="49.8333333333333,33.3134328358209"
+                    Point3="49.8333333333333,37.3134328358209" />
+                  <mssgle:LineSegment
+                    End="49.8333333333333,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de conversión de datos]"
+          TopLeft="385.5,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5"
+              Start="0,0"
+              End="0,35">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla2]"
           TopLeft="894,915">
@@ -6191,10 +8256,188 @@ order by documento_nro</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Tarea Flujo de datos\Unión de todo"
-          TopLeft="1017.23257023933,496.516348773842" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla1]"
+          TopLeft="469,239.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5"
+              Start="0,0"
+              End="0,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de combinación de mezcla]"
+          TopLeft="618.102261553589,589.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.1022615535892,54"
+              Start="0,0"
+              End="-13.1022615535892,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="-4,27" />
+                  <mssgle:LineSegment
+                    End="-9.10226155358919,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.10226155358919,27"
+                    Point2="-13.1022615535892,27"
+                    Point3="-13.1022615535892,31" />
+                  <mssgle:LineSegment
+                    End="-13.1022615535892,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
+          TopLeft="605,685.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.6022615535892,63"
+              Start="0,0"
+              End="75.6022615535892,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4594594594595" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4594594594595"
+                    Point2="0,37.4594594594595"
+                    Point3="4,37.4594594594595" />
+                  <mssgle:LineSegment
+                    End="71.6022615535892,37.4594594594595" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.6022615535892,37.4594594594595"
+                    Point2="75.6022615535892,37.4594594594595"
+                    Point3="75.6022615535892,41.4594594594595" />
+                  <mssgle:LineSegment
+                    End="75.6022615535892,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada1]"
+          TopLeft="1054.5,891.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.0659035726674,-352.983651226158"
+              Start="0,0"
+              End="58.0659035726674,-345.483651226158">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-205.478701614432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-205.478701614432"
+                    Point2="0,-209.478701614432"
+                    Point3="4,-209.478701614432" />
+                  <mssgle:LineSegment
+                    End="54.0659035726674,-209.478701614432" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.0659035726674,-209.478701614432"
+                    Point2="58.0659035726674,-209.478701614432"
+                    Point3="58.0659035726674,-213.478701614432" />
+                  <mssgle:LineSegment
+                    End="58.0659035726674,-345.483651226158" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+          TopLeft="468.801130776795,325">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5"
+              Start="0,0"
+              End="0,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[EsFuncionario]"
+          TopLeft="736.602261553589,748.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="330.296975352412,-209.983651226158"
+              Start="0,0"
+              End="330.296975352412,-202.483651226158">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-100.743010798156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-100.743010798156"
+                    Point2="0,-104.743010798156"
+                    Point3="4,-104.743010798156" />
+                  <mssgle:LineSegment
+                    End="326.296975352412,-104.743010798156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="326.296975352412,-104.743010798156"
+                    Point2="330.296975352412,-104.743010798156"
+                    Point3="330.296975352412,-108.743010798156" />
+                  <mssgle:LineSegment
+                    End="330.296975352412,-202.483651226158" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="134.196456426206,-99.743010798156,61.9040625,9.470703125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[EsDocente]"
           TopLeft="492.602261553589,404.5">
@@ -6231,98 +8474,6 @@ order by documento_nro</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[EsFuncionario]"
-          TopLeft="736.602261553589,748.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="330.296975352412,-209.983651226158"
-              Start="0,0"
-              End="330.296975352412,-202.483651226158">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-100.743010798156" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-100.743010798156"
-                    Point2="0,-104.743010798156"
-                    Point3="4,-104.743010798156" />
-                  <mssgle:LineSegment
-                    End="326.296975352412,-104.743010798156" />
-                  <mssgle:CubicBezierSegment
-                    Point1="326.296975352412,-104.743010798156"
-                    Point2="330.296975352412,-104.743010798156"
-                    Point3="330.296975352412,-108.743010798156" />
-                  <mssgle:LineSegment
-                    End="330.296975352412,-202.483651226158" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="134.196456426206,-99.7430107981559,61.9040625,9.470703125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada2]"
-          TopLeft="1054.5,891.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="58.0659035726674,-352.983651226158"
-              Start="0,0"
-              End="58.0659035726674,-345.483651226158">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-205.478701614432" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-205.478701614432"
-                    Point2="0,-209.478701614432"
-                    Point3="4,-209.478701614432" />
-                  <mssgle:LineSegment
-                    End="54.0659035726674,-209.478701614432" />
-                  <mssgle:CubicBezierSegment
-                    Point1="54.0659035726674,-209.478701614432"
-                    Point2="58.0659035726674,-209.478701614432"
-                    Point3="58.0659035726674,-213.478701614432" />
-                  <mssgle:LineSegment
-                    End="58.0659035726674,-345.483651226158" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de Unión de todo 1]"
-          TopLeft="1162.23257023933,514.258174386921">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.7674297606659,0"
-              Start="0,0"
-              End="22.2674297606659,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="22.2674297606659,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -6349,6 +8500,258 @@ order by documento_nro</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tarea Flujo de datos 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person"
+          TopLeft="65.8333333333333,60" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Tarea Flujo de datos 1\Carga DT_CA_Persona"
+          TopLeft="210.444444444445,479" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Tarea Flujo de datos 1\Extrae funcionarios Saico"
+          TopLeft="340.666666666667,60" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Tarea Flujo de datos 1\Conversión de datos"
+          TopLeft="215.444444444445,384.665474925114" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de conversión de datos]"
+          TopLeft="302.944444444445,426.665474925114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.3345250748864"
+              Start="0,0"
+              End="0,44.8345250748864">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.8345250748864" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Tarea Flujo de datos 1\TRIM(pin)"
+          TopLeft="107.833333333333,126.647679324895" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de origen de OLE DB]"
+          TopLeft="170.833333333333,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.6476793248945"
+              Start="0,0"
+              End="0,17.1476793248945">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1476793248945" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Tarea Flujo de datos 1\TRIM(docNr)"
+          TopLeft="369.166666666667,126.647679324895" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de origen de OLE DB1]"
+          TopLeft="439.166666666667,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.6476793248945"
+              Start="0,0"
+              End="0,17.1476793248945">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1476793248945" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Tarea Flujo de datos 1\Ordenar"
+          TopLeft="112.333333333333,193.295358649789" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de columna derivada]"
+          TopLeft="170.833333333333,168.647679324895">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.6476793248945"
+              Start="0,0"
+              End="0,17.1476793248945">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1476793248945" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Tarea Flujo de datos 1\Ordenar 1"
+          TopLeft="376.166666666667,193.295358649789" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de columna derivada1]"
+          TopLeft="439.166666666667,168.647679324895">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.6476793248945"
+              Start="0,0"
+              End="0,17.1476793248945">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1476793248945" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Tarea Flujo de datos 1\Combinación de mezcla"
+          TopLeft="207.944444444445,290.330949850227" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de ordenación]"
+          TopLeft="170.833333333333,235.295358649789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101.777777777778,55.0355912004381"
+              Start="0,0"
+              End="101.777777777778,47.5355912004381">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7456022800101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.7456022800101"
+                    Point2="0,32.7456022800101"
+                    Point3="4,32.7456022800101" />
+                  <mssgle:LineSegment
+                    End="97.777777777778,32.7456022800101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97.777777777778,32.7456022800101"
+                    Point2="101.777777777778,32.7456022800101"
+                    Point3="101.777777777778,36.7456022800101" />
+                  <mssgle:LineSegment
+                    End="101.777777777778,47.5355912004381" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de ordenación1]"
+          TopLeft="439.166666666667,235.295358649789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.888888888889,55.0355912004381"
+              Start="0,0"
+              End="-105.888888888889,47.5355912004381">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7456022800101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.7456022800101"
+                    Point2="0,32.7456022800101"
+                    Point3="-4,32.7456022800101" />
+                  <mssgle:LineSegment
+                    End="-101.888888888889,32.7456022800101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-101.888888888889,32.7456022800101"
+                    Point2="-105.888888888889,32.7456022800101"
+                    Point3="-105.888888888889,36.7456022800101" />
+                  <mssgle:LineSegment
+                    End="-105.888888888889,47.5355912004381" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos 1.Paths[Salida de combinación de mezcla]"
+          TopLeft="302.944444444445,332.330949850227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.3345250748865"
+              Start="0,0"
+              End="0,44.8345250748865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.8345250748865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos 1\Extrae ODS_ZK_per_person">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
